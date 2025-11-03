@@ -1,0 +1,33 @@
+*{
+    margin: 0;
+    padding: 0;
+    outline: 0;
+    box-sizing: border-box;
+}
+body{
+    font-family: Poppins;
+}
+.patient_list_area{
+    width: 250px;
+}
+.online_offline_tab{
+border-bottom: 1px solid #7367f0;
+}
+.online_offline_tab button{
+    background: none;
+    border: none;
+    font-size: 14px;
+    color: #000000;
+}
+.online_offline_tab button:nth-child(1){
+    border-top-right-radius: 8px;
+}
+.online_offline_tab button:nth-child(2 ){
+    border-top-left-radius: 8px;
+}
+.online_offline_tab button.active{
+    border: 1px solid #7367f0;
+    border-bottom: none;
+    background: #7367f050;
+
+}
