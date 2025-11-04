@@ -31,3 +31,53 @@ border-bottom: 1px solid #7367f0;
     background: #7367f050;
 
 }
+.input_area select{
+    font-size: 14px;
+    color: #000000;
+    font-family: Inter;
+}
+.input_area label{
+    background: #ffffff;
+    left: 10px;
+    top: -9px;
+    font-size: 12px;
+}
+
+.today_or_all_select{
+border-bottom: 1px solid #9898995c;
+}
+.today_or_all_select button{
+    background: none;
+    border: none;
+    font-size: 14px;
+    color: #000000;
+}
+.today_or_all_select button.active{
+    border: 1px solid #9898995c;
+    border-bottom: 1px solid #989899;
+    background: #9898995c;
+
+}
+.filter_btn{
+    border: none;
+    background: #7367f0;
+    color: #ffffff;
+    font-size: 15px;
+    padding: 7px;
+    border-radius: 4px;
+}
+#filterIndicator{
+    font-size: 10px;
+    height: 15px;
+    width: 15px;
+}
+.appointmentstatusTitle{
+    font-weight: 600;
+    font-size: 14px;
+    border-bottom: 2px solid gray;
+}
+.waiting_engagedcount p{
+    font-size: 12px;
+    text-align: center;
+    font-weight: 500;
+}
