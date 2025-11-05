@@ -22,6 +22,7 @@ body{
     height: 100%;
     transition: all 0.3s ease;
     z-index: 2;
+    background: #ffffff;
 }
 .patient_details_area{
     /* width: calc(100% - 250px); */
