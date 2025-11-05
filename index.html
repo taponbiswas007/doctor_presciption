@@ -11,7 +11,7 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
         rel="stylesheet" />
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" />
     <link rel="stylesheet" href="styles.css" />
@@ -36,7 +36,7 @@
                     <div class="w-50 text-capitalize patient_categoryBtn OnlinePatient_listBtn">online</div>
 
                 </div>
-                <div class="">
+                <div class=" h-100 overflow-y-auto pb-4">
                     <!-- doctor select inputbox -->
                     <div class="input_area position-relative">
                         <label for="" class="position-absolute">Doctor</label>
@@ -731,7 +731,7 @@
 
         </div>
         <!-- right content area end  -->
-        <div class="patient_details_area h-100">
+        <div class="patient_details_area h-100 bg-white p-4 pt-0">
             <!-- patient details area -->
             <div class="d-flex justify-content-between align-items-start flex-lg-row flex-column-reverse gap-2">
                 <div class="patient_info_details_area d-flex align-items-start pt-2">
@@ -784,45 +784,334 @@
                         </button>
                     </div>
                     <div
-                        class="global_button_group d-flex justify-content-xl-between justify-content-lg-end justify-content-center w-100 align-items-center gap-2 pt-2">
+                        class="global_button_group d-flex justify-content-xl-between justify-content-lg-end w-lg-100 justify-content-center align-items-center gap-2 pt-2">
                         <button>admit</button>
-                        <button>appt</button>
+                        <button>+appt</button>
                         <button>+patient</button>
                         <button>send order</button>
                     </div>
                 </div>
             </div>
             <!-- patient data area start -->
-             <div class="border-top mt-3 pt-2">
+            <div class="border-top mt-3 pt-2">
                 <!-- summary area -->
-                 <div class="d-flex">
-                    <h1>wail-in/waiting</h1>
-                    |
-                    <div class="date">
-                        12-jun-2024
+                <div class="d-flex justify-content-between align-items-start  summary_area gap-3  mb-3">
+                    <div class="d-flex flex-wrap justify-content-start align-items-center gap-3">
+                        <div class="d-flex justify-content-start align-items-center gap-3 flex-wrap">
+                            <h1><span>walk-in</span>/waiting</h1>
+                            |
+                            <div class="date">
+                                12-jun-2024 07:50 PM <button class="withOutBg_Btn"><i
+                                        class="fa-solid fa-circle-info"></i></button>
+                            </div>
+                            <button class="withOutBg_Btn">New Appointment</button>
+                        </div>
+                        <div class="d-flex justify-content-center align-items-center gap-3">
+                            <button class="withOutBg_Btn">Upload Document</button>
+                            <button class="withOutBg_Btn"><i class="fa-solid fa-bullhorn"></i></button>
+                            <button class="withOutBg_Btn"><i class="fa-solid fa-bell-concierge"></i></button>
+                        </div>
                     </div>
-                    
-                 </div>
-                <div class="d-flex">
-                    <div class="patient_data_tabs d-flex gap-3">
-                        <button class="active">Overview</button>
-                        <button>Visits</button>
-                        <button>Prescriptions</button>
-                        <button>Documents</button>
-                        <button>Lab Results</button>
-                        <button>Billing</button>
-                        <button>Insurance</button>
-                        <button>Messages</button>
-                        <button>Notes</button>
+                    <div class="d-flex justify-content-end align-items-center gap-2">
+                        <button class="text-danger border border-danger withOutBg_Btn">
+                            <i class="fa-solid fa-xmark"></i>
+                        </button>
+                        <button class="withOutBg_Btn fs-5"><i class="fa-solid fa-ellipsis-vertical"></i></button>
+                    </div>
+
+
+                </div>
+                <div class="d-flex overflow-hidden border-bottom pb-2">
+                    <div
+                        class="patient_sevices_tabs d-flex justify-content-start flex-nowrap pb-3 gap-3 overflow-x-scroll">
+                        <button data-target="#summary">Summary</button>
+                        <button class="active" data-target="#vitals">Vitals/Observation</button>
+                        <button data-target="#history">Complains/History</button>
+                        <button data-target="#investigation">Investigation</button>
+                        <button data-target="#provisional">Provisional Diagnose</button>
+                        <button data-target="#diagnosis">Diagnosis</button>
+                        <button data-target="#rx">Rx</button>
+                        <button data-target="#advice">Advice</button>
+                        <button data-target="#followup">Follow Up</button>
+                        <button data-target="#referred">Referred To</button>
+                        <button data-target="#template">Template</button>
+                        <button data-target="#save">Save</button>
+                        <button data-target="#saveprint">Save & Print</button>
                     </div>
                 </div>
-             </div>
+
+                <!-- patient main data category area start -->
+                <div class="patient_main_data_category_area mb-3">
+
+
+                    <!-- follow up area start -->
+                    <div class="follow_Up px-1 flex-wrap my-3">
+                        <p class="text-nowrap"><span>Vitals:</span> 20cm</p>
+                        <p class="text-nowrap"><span>Follow Up:</span> Thursday, 18 April 2024</p>
+                    </div>
+                    <!-- follow up area end -->
+                    <div id="summary" class="tab-content ">🩺 <b>Summary</b> content loaded here.</div>
+                    <div id="vitals" class="tab-content active">
+                        <h1>Vitals:</h1>
+                        <div class="row g-3">
+                            <div class="col-xl-3 col-lg-4 col-sm-6 col-12">
+                                <div class=" position-relative input_feild_area">
+                                    <label for="height" class="form-label position-absolute">Height (cm)</label>
+                                    <input type="number" class="form-control" id="height" placeholder="e.g., 170">
+                                </div>
+                            </div>
+                            <div class="col-xl-3 col-lg-4 col-sm-6 col-12">
+                                <div class=" position-relative input_feild_area">
+                                    <label for="weight" class="form-label position-absolute">Weight (kg)</label>
+                                    <input type="number" class="form-control" id="weight" placeholder="e.g., 70">
+                                </div>
+                            </div>
+                            <div class="col-xl-3 col-lg-4 col-sm-6 col-12">
+                                <div class=" position-relative input_feild_area">
+                                    <label for="bmi" class="form-label position-absolute">BMI</label>
+                                    <input type="number" class="form-control" id="bmi" placeholder="e.g., 24.2">
+                                </div>
+                            </div>
+                            <div class="col-xl-3 col-lg-4 col-sm-6 col-12">
+                                <div class=" position-relative input_feild_area">
+                                    <label for="temperature" class="form-label position-absolute">Temperature
+                                        (°C)</label>
+                                    <input type="number" class="form-control" id="temperature" placeholder="e.g., 36.6">
+                                </div>
+                            </div>
+                            <div class="col-xl-3 col-lg-4 col-sm-6 col-12">
+                                <div class=" position-relative input_feild_area">
+                                    <label for="pulse" class="form-label position-absolute">Pulse (bpm)</label>
+                                    <input type="number" class="form-control" id="pulse" placeholder="e.g., 72">
+                                </div>
+                            </div>
+                            <div class="col-xl-3 col-lg-4 col-sm-6 col-12">
+                                <div class=" position-relative input_feild_area">
+                                    <label for="respiration" class="form-label position-absolute">Respiration
+                                        (breaths/min)</label>
+                                    <input type="number" class="form-control" id="respiration" placeholder="e.g., 16">
+                                </div>
+                            </div>
+                            <div class="col-xl-3 col-lg-4 col-sm-6 col-12">
+                                <div class=" position-relative input_feild_area">
+                                    <label for="bp" class="form-label position-absolute">Blood Pressure
+                                        (mmHg)</label>
+                                    <input type="text" class="form-control" id="bp" placeholder="e.g., 120/80">
+                                </div>
+                            </div>
+
+                        </div>
+                        <!-- ge area -->
+                        <h1 class="mt-4 mb-3">GE:</h1>
+                        <div class="row g-4">
+                            <div class="col-md-6">
+                                <input type="search" class="form-control" placeholder="Search GE...">
+                            </div>
+                            <div class="col-md-6">
+                                <div class="d-flex gap-2 h-100 w-100 justify-content-start align-items-center gap-3">
+                                    <button class="withOutBg_Btn">Save As Group</button>
+                                    <button class="withOutBg_Btn">Display</button>
+                                    <button class="withOutBg_Btn">Clear</button>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="d-flex justify-content-start align-items-center gap-3 mb-2 flex-wrap">
+                                    <div class="selected_items">
+                                        <button><i class="fa-solid fa-grip-vertical"></i></button>
+                                        <span> E+CB</span>
+                                        <button class="ms-2"><i class="fa-solid fa-xmark"></i></button>
+                                    </div>
+                                </div>
+
+                                <div class="ge_data_area border p-3 rounded-3" style="min-height: 150px;">
+                                    <button class="groupBtn" data-bs-toggle="offcanvas"
+                                        data-bs-target="#itemsdetailsCanvas"
+                                        aria-controls="itemsdetailsCanvas">E+CB</button>
+                                    <button class="groupBtn" data-bs-toggle="offcanvas"
+                                        data-bs-target="#itemsdetailsCanvas"
+                                        aria-controls="itemsdetailsCanvas">E+CB</button>
+                                    <button class="groupBtn" data-bs-toggle="offcanvas"
+                                        data-bs-target="#itemsdetailsCanvas"
+                                        aria-controls="itemsdetailsCanvas">E+CB</button>
+                                    <button class="groupBtn" data-bs-toggle="offcanvas"
+                                        data-bs-target="#itemsdetailsCanvas"
+                                        aria-controls="itemsdetailsCanvas">E+CB</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- S/E area -->
+                        <h1 class="mt-4 mb-3">S/E:</h1>
+                        <div class="row g-4">
+                            <div class="col-md-6">
+                                <input type="search" class="form-control" placeholder="Search GE...">
+                            </div>
+                            <div class="col-md-6">
+                                <div class="d-flex gap-2 h-100 w-100 justify-content-start align-items-center gap-3">
+                                    <button class="withOutBg_Btn">Save As Group</button>
+                                    <button class="withOutBg_Btn">Display</button>
+                                    <button class="withOutBg_Btn">Clear</button>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="d-flex justify-content-start align-items-center gap-3 mb-2 flex-wrap">
+                                    <div class="selected_items">
+                                        <button><i class="fa-solid fa-grip-vertical"></i></button>
+                                        <span> E+CB</span>
+                                        <button class="ms-2"><i class="fa-solid fa-xmark"></i></button>
+                                    </div>
+                                </div>
+                                <div class="ge_data_area border rounded-3 p-3" style="min-height: 150px;">
+                                    <button class="groupBtn" data-bs-toggle="offcanvas"
+                                        data-bs-target="#itemsdetailsCanvas"
+                                        aria-controls="itemsdetailsCanvas">E+CB</button>
+                                    <button class="groupBtn" data-bs-toggle="offcanvas"
+                                        data-bs-target="#itemsdetailsCanvas"
+                                        aria-controls="itemsdetailsCanvas">E+CB</button>
+                                    <button class="groupBtn" data-bs-toggle="offcanvas"
+                                        data-bs-target="#itemsdetailsCanvas"
+                                        aria-controls="itemsdetailsCanvas">E+CB</button>
+                                    <button class="groupBtn" data-bs-toggle="offcanvas"
+                                        data-bs-target="#itemsdetailsCanvas"
+                                        aria-controls="itemsdetailsCanvas">E+CB</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="history" class="tab-content"> <b>Complains/History</b> section here.</div>
+                    <div id="investigation" class="tab-content"> <b>Investigation</b> details here.</div>
+                    <div id="provisional" class="tab-content"> <b>Provisional Diagnose</b> section here.</div>
+                    <div id="diagnosis" class="tab-content"><b>Diagnosis</b> details here.</div>
+                    <div id="rx" class="tab-content"> <b>Rx</b> (Prescription) area here.</div>
+                    <div id="advice" class="tab-content"><b>Advice</b> content here.</div>
+                    <div id="followup" class="tab-content"><b>Follow Up</b> information here.</div>
+                    <div id="referred" class="tab-content"><b>Referred To</b> section here.</div>
+                    <div id="template" class="tab-content"> <b>Template</b> area here.</div>
+                    <div id="save" class="tab-content text-success"><b> Data saved successfully!</b></div>
+                    <div id="saveprint" class="tab-content text-primary"><b> Data saved and sent to
+                            print!</b></div>
+
+                    <!-- Items wise details area start -->
+
+                    <div class="offcanvas offcanvas-end" tabindex="-1" id="itemsdetailsCanvas"
+                        aria-labelledby="itemsdetailsCanvasLabel">
+                        <div class="offcanvas-header items_wise_details_area">
+                            <div class="d-flex w-100 justify-content-between align-items-center gap-2">
+                                <h1>Detailed Information of <span class="text-danger">Fever</span></h1>
+                                <div class="d-flex justify-content-end align-items-center gap-3">
+                                    <!-- settings button -->
+                                    <button class="settingsBtn" data-bs-toggle="modal" data-bs-target="#settingsarea"><i
+                                            class="fa-solid fa-gear"></i></button>
+
+                                    <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas"
+                                        aria-label="Close"></button>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="offcanvas-body">
+
+                            <!-- duration table area start -->
+                            <div class="duration_table">
+                                <div class="table-responsive">
+                                    <table class="table table-bordered text-center align-middle">
+                                        <thead>
+                                            <tr>
+                                                <th colspan="8">Duration</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>1h</td>
+                                                <td>8h</td>
+                                                <td>12h</td>
+                                                <td>1d</td>
+                                                <td>2d</td>
+                                                <td>3d</td>
+                                                <td>4d</td>
+                                                <td>5d</td>
+                                            </tr>
+                                            <tr>
+                                                <td>1w</td>
+                                                <td>10d</td>
+                                                <td>2w</td>
+                                                <td>15d</td>
+                                                <td>3w</td>
+                                                <td>4w</td>
+                                                <td>1m</td>
+                                                <td>2m</td>
+                                            </tr>
+                                            <tr>
+                                                <td>3m</td>
+                                                <td>6m</td>
+                                                <td>1y</td>
+                                                <td colspan="5">
+                                                    <div class="d-flex justify-content-start align-items-center gap-2">
+                                                        <input type="number" class="form-control" style="width: 100px;"
+                                                            placeholder="No.">
+                                                        <select class="form-select" style="width: 100px;">
+                                                            <option value="days">Days</option>
+                                                            <option value="weeks">Weeks</option>
+                                                            <option value="months">Months</option>
+                                                            <option value="years">Years</option>
+                                                        </select>
+
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+
+                                <!-- Hidden input for form -->
+                                <input type="hidden" id="selectedDuration" name="duration">
+                            </div>
+
+                            <!-- duration table area start -->
+                        </div>
+                    </div>
+
+                    <!-- settings modal start -->
+                    <!-- Modal -->
+                    <div class="modal fade" id="settingsarea" tabindex="-1" aria-labelledby="settingsBtnLabel"
+                        aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered modal-xl">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="settingsBtnLabel">Modal title</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                        aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    ...
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary"
+                                        data-bs-dismiss="modal">Close</button>
+                                    <button type="button" class="btn btn-primary">Save changes</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- settings modal end -->
+
+
+                    <!-- Items wise details area end -->
+
+
+
+                </div>
+                <!-- patient main data category area end -->
+
+
+                <!-- petient data area end -->
+            </div>
         </div>
 
-        
+
     </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     <script src="main.js"></script>
     <script>
         // stop propagation on all icon buttons

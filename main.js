@@ -9,7 +9,10 @@ function handleResponsiveLayout() {
         // Mobile view - default to collapsed
         $patientListArea.addClass('collapsed');
         $patientListArea.css('left', '-250px');
-        $patientDetailsArea.css('margin-left', '0');
+        $patientDetailsArea.css({
+            'margin-left': '0',
+            'max-width': '100%'
+        });
         $icon.removeClass('fa-angle-left').addClass('fa-angle-right');
     } else {
         // Desktop view - default to expanded
@@ -43,7 +46,10 @@ $(document).ready(function() {
         
         if ($patientListArea.hasClass('collapsed')) {
             $patientListArea.css('left', '-250px');
-            $patientDetailsArea.css('margin-left', '0');
+           $patientDetailsArea.css({
+            'margin-left': '0',
+            'max-width': '100%'
+        });
             $icon.removeClass('fa-angle-left').addClass('fa-angle-right');
         } else {
             $patientListArea.css('left', '0');
@@ -308,4 +314,43 @@ $(document).ready(function() {
     $('#filterBtn').on('hidden.bs.dropdown', function() {
         $('.dropdown-menu').removeClass('show-animate');
     });
+});
+
+// patient service tabs area
+$(document).ready(function() {
+  const $tabs = $('.patient_sevices_tabs button');
+  const $contents = $('.tab-content');
+
+  $tabs.on('click', function() {
+    const target = $(this).data('target');
+
+    // tab active class
+    $tabs.removeClass('active');
+    $(this).addClass('active');
+
+    // smooth hide/show with fade animation
+    $contents.filter('.active').fadeOut(200, function() {
+      $(this).removeClass('active');
+      $(target).fadeIn(300).addClass('active');
+    });
+  });
+});
+
+// duration table
+$(document).ready(function() {
+  $('.duration_table table td').on('click', function() {
+    // Remove old selection
+    $('.duration_table table td').removeClass('selected');
+
+    // Add selected class to clicked cell
+    $(this).addClass('selected');
+
+    // Get selected text value (e.g., "2d")
+    const selectedValue = $(this).text().trim();
+
+    // Set the hidden input value
+    $('#selectedDuration').val(selectedValue);
+
+    console.log("Selected duration:", selectedValue);
+  });
 });
