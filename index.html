@@ -2,35 +2,44 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Doctor prescription</title>
     <!-- google font -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
         href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
-        rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+        rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" />
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" />
-    <link rel="stylesheet" href="styles.css">
-
+    <link rel="stylesheet" href="styles.css" />
 </head>
 
 <body>
-    <div class=" prescription_full_area px-4">
+    <div class="prescription_full_area d-flex gap-2 justify-content-between align-items-start px-4">
         <!-- left menu area start -->
         <div class="patient_list_area bg-white">
-            <div class="online_offline_tab mb-3 d-flex justify-content-between align-items-center">
-                <button class="w-50 text-capitalize active">walk on</button>
-                <button class="w-50 text-capitalize">online</button>
+            <div class="patient_list_area_inner">
+                 <button class="toggle_patientList">
+                    <i class="fa-solid fa-angle-left"></i>
+                </button>
+                <div class="online_offline_tab mb-3 d-flex justify-content-between align-items-center">
+                <div class="w-50 patient_categoryBtn text-capitalize active offlinepatient_listBtn">
+                    walk on
+                    <button class="refreshBtn">
+                        <i class="fa-solid fa-arrow-rotate-right"></i>
+                    </button>
+                </div>
+                <div class="w-50 text-capitalize patient_categoryBtn OnlinePatient_listBtn">online</div>
+               
             </div>
             <div class="">
                 <!-- doctor select inputbox -->
                 <div class="input_area position-relative">
                     <label for="" class="position-absolute">Doctor</label>
-                    <select name="" id="" class=" form-select">
+                    <select name="" id="" class="form-select">
                         <option value="">Dr. ABC</option>
                         <option value="">Dr. ABC</option>
                         <option value="">Dr. ABC</option>
@@ -38,15 +47,15 @@
                 </div>
                 <!-- offline patient list -->
                 <div class="offlinepatient_list pt-4">
-                    <div class="today_or_all_select  d-flex justify-content-between align-items-center">
-                        <button class="w-50 active">Today(8)</button>
-                        <button class="w-50">All</button>
+                    <div class="today_or_all_select d-flex justify-content-between align-items-center">
+                        <button class="w-50 active TodayPatientBtn">Today(8)</button>
+                        <button class="w-50 allPatientBtn">All</button>
                     </div>
                     <div class="mt-4">
                         <div class="d-flex justify-content-between align-items-center gap-2">
-                            <div class=" position-relative">
-                                <input type="search" class="form-control pe-5">
-                                <span class="position-absolute top-50 translate-middle-y " style="right: 10px;"><i
+                            <div class="position-relative">
+                                <input type="search" class="form-control pe-5" placeholder="Search" />
+                                <span class="position-absolute top-50 translate-middle-y" style="right: 10px"><i
                                         class="fa-solid fa-magnifying-glass"></i></span>
                             </div>
                             <!-- Filter Button -->
@@ -54,80 +63,691 @@
                                 <button class="filter_btn position-relative" type="button" id="filterBtn"
                                     data-bs-toggle="dropdown" aria-expanded="false">
                                     <i class="fa-solid fa-filter"></i>
-                                    <!-- Active indicator -->
                                     <span id="filterIndicator"
                                         class="position-absolute bottom-0 end-0 bg-info rounded-circle d-none">
                                         <i class="fa-regular fa-circle-check"></i>
                                     </span>
                                 </button>
 
-                                <ul class="dropdown-menu dropdown-menu-end shadow border-0" aria-labelledby="filterBtn"
-                                    style="min-width: 200px;">
+                                <ul class="dropdown-menu dropdown-menu-end shadow border-0 p-3"
+                                    aria-labelledby="filterBtn" style="min-width: 220px">
+                                    <li class="dropdown-header fw-bold text-secondary mb-2">Filter by Status</li>
                                     <li>
-                                        <label class="dropdown-item d-flex align-items-center">
-                                            <input type="checkbox" class="form-check-input me-2 filter-option"
-                                                value="1">
-                                            Example 1
+                                        <label class="dropdown-item d-flex align-items-center py-2 filter-item">
+                                            <input type="checkbox" class="form-check-input me-3 filter-option"
+                                                value="waiting" />
+                                            <span class="status-indicator waiting-dot me-2"></span>
+                                            Waiting
                                         </label>
                                     </li>
                                     <li>
-                                        <label class="dropdown-item d-flex align-items-center">
-                                            <input type="checkbox" class="form-check-input me-2 filter-option"
-                                                value="2">
-                                            Example 2
+                                        <label class="dropdown-item d-flex align-items-center py-2 filter-item">
+                                            <input type="checkbox" class="form-check-input me-3 filter-option"
+                                                value="engaged" />
+                                            <span class="status-indicator engaged-dot me-2"></span>
+                                            Engaged
                                         </label>
                                     </li>
                                     <li>
-                                        <label class="dropdown-item d-flex align-items-center">
-                                            <input type="checkbox" class="form-check-input me-2 filter-option"
-                                                value="3">
-                                            Example 3
+                                        <label class="dropdown-item d-flex align-items-center py-2 filter-item">
+                                            <input type="checkbox" class="form-check-input me-3 filter-option"
+                                                value="confirmed" />
+                                            <span class="status-indicator confirmed-dot me-2"></span>
+                                            Confirmed
                                         </label>
                                     </li>
                                     <li>
-                                        <label class="dropdown-item d-flex align-items-center">
-                                            <input type="checkbox" class="form-check-input me-2 filter-option"
-                                                value="4">
-                                            Example 4
+                                        <label class="dropdown-item d-flex align-items-center py-2 filter-item">
+                                            <input type="checkbox" class="form-check-input me-3 filter-option"
+                                                value="checkout" />
+                                            <span class="status-indicator checkout-dot me-2"></span>
+                                            Checkout
                                         </label>
+                                    </li>
+                                    <li>
+                                        <label class="dropdown-item d-flex align-items-center py-2 filter-item">
+                                            <input type="checkbox" class="form-check-input me-3 filter-option"
+                                                value="cancelled" />
+                                            <span class="status-indicator cancelled-dot me-2"></span>
+                                            Cancelled
+                                        </label>
+                                    </li>
+                                    <li class="dropdown-divider my-2"></li>
+                                    <li>
+                                        <button
+                                            class="btn btn-sm btn-outline-secondary w-100 d-flex align-items-center justify-content-center"
+                                            id="clearFilters">
+                                            <i class="fa-solid fa-rotate-left me-2"></i> Clear Filters
+                                        </button>
                                     </li>
                                 </ul>
                             </div>
                         </div>
-                        <h1 class="appointmentstatusTitle mt-4">
-                            <i class="fa-solid fa-angle-down"></i> Today's Appointment Status
-                        </h1>
-                        <div class="d-flex justify-content-between align-items-center mt-4">
-                            <div class="d-flex waiting_engagedcount justify-content-center align-items-center flex-column gap-1">
-                                <p class="mb-0">Waiting</p>
-                                <span class=" badge rounded-pill bg-warning">10</span>
-                            </div> 
-                            <div class="d-flex waiting_engagedcount justify-content-center align-items-center flex-column gap-1">
-                                <p class="mb-0">Engaged</p>
-                                <span class=" badge rounded-pill bg-info">5</span>
-                            </div> 
-                            <div class="d-flex waiting_engagedcount justify-content-center align-items-center flex-column gap-1">
-                                <p class="mb-0">CheckOut</p>
-                                <span class=" badge rounded-pill bg-success">7</span>
-                            </div>
-                        </div>
-                        <ul class=" patient_list mt-4 list-unstyled">
-                            <li>
-                                <div class="d-flex justify-content-between align-items-start gap-2">
-                                    <h1>Mr. Romesh Patowary</h1>
+                        <!-- today patient list -->
+                        <div class="todayPatientList">
+                            <h1 class="appointmentstatusTitle mt-4">
+                                <i class="fa-solid fa-angle-down"></i> Today's Appointment
+                                Status
+                            </h1>
+                            <div class="d-flex border-bottom pb-2 justify-content-between align-items-center mt-4">
+                                <div
+                                    class="d-flex waiting_engagedcount justify-content-center align-items-center flex-column gap-1">
+                                    <p class="mb-0">Waiting</p>
+                                    <span class="badge rounded-pill bg-warning">10</span>
                                 </div>
-                            </li>
-                        </ul>
+                                <div
+                                    class="d-flex waiting_engagedcount justify-content-center align-items-center flex-column gap-1">
+                                    <p class="mb-0">Engaged</p>
+                                    <span class="badge rounded-pill bg-info">555</span>
+                                </div>
+                                <div
+                                    class="d-flex waiting_engagedcount justify-content-center align-items-center flex-column gap-1">
+                                    <p class="mb-0">CheckOut</p>
+                                    <span class="badge rounded-pill bg-success">7</span>
+                                </div>
+                            </div>
+                            <ul class="patient_list mt-4 list-unstyled">
+                                <li>
+                                    <a href="#" class="d-flex p-2 justify-content-between align-items-start gap-2">
+                                        <div class="">
+                                            <h1>Mr. Romesh Patowary <span>(HTPL 20)</span></h1>
+                                            <p>New Appointment</p>
+                                            <h2>WS: 5H 28M</h2>
+                                        </div>
+                                        <div class="text-end " style="width: 127px;">
+                                            <p class="mb-1">10:30 AM</p>
+                                            <!-- Icon Buttons Group -->
+                                            <div class="d-flex flex-wrap gap-2 align-items-center justify-content-end">
+                                                <!-- Appointment Alert -->
+                                                <button class="bg-transparent border-0 p-0 icon-btn"
+                                                    data-bs-toggle="tooltip" data-bs-placement="top"
+                                                    title="Appointment Alert" style="height: 22px; width: 22px;">
+                                                    <svg fill="none" xmlns="http://www.w3.org/2000/svg"
+                                                        viewBox="0 0 448 448" width="22" height="22" stroke="#7367f0"
+                                                        fill="#7367f0" stroke-width="30" stroke-linecap="round"
+                                                        stroke-linejoin="round">
+                                                        <g>
+                                                            <path d="M310.66,185.477c15.238,9.838,28.614,22.096,39.756,36.436c1.577,2.029,3.938,3.091,6.323,3.091
+          c1.715,0,3.443-0.549,4.903-1.683c3.488-2.711,4.119-7.737,1.408-11.227c-12.251-15.765-26.958-29.242-43.713-40.059
+          c-3.711-2.396-8.665-1.329-11.06,2.382C305.882,178.129,306.948,183.081,310.66,185.477z"></path>
+                                                            <path d="M266.855,165.802c6.121,1.697,12.208,3.788,18.091,6.214c0.998,0.411,2.03,0.605,3.047,0.605
+          c3.144,0,6.126-1.865,7.399-4.952c1.684-4.085-0.263-8.762-4.347-10.446c-6.476-2.67-13.177-4.971-19.915-6.839
+          c-4.259-1.176-8.666,1.314-9.847,5.571C260.104,160.213,262.598,164.621,266.855,165.802z"></path>
+                                                            <path d="M432,344H256v-16h168c4.418,0,8-3.582,8-8c0-112.011-89.003-203.611-200-207.831V96c0-0.456-0.047-0.9-0.12-1.335
+          C241.253,91.396,248,82.474,248,72c0-13.233-10.767-24-24-24c-13.234,0-24,10.767-24,24c0,10.474,6.747,19.396,16.12,22.665
+          C216.047,95.1,216,95.544,216,96v16.169C105.003,116.389,16,207.989,16,320c0,4.418,3.582,8,8,8h168v16H16c-8.822,0-16,7.178-16,16
+          v24c0,8.822,7.178,16,16,16h416c8.822,0,16-7.178,16-16v-24C448,351.178,440.822,344,432,344z"></path>
+                                                        </g>
+                                                    </svg>
+                                                </button>
+
+                                                <!-- Send Notification -->
+                                                <button class="bg-transparent border-0 p-0 icon-btn"
+                                                    data-bs-toggle="tooltip" data-bs-placement="top"
+                                                    title="Send Notification" style="height: 22px; width: 22px;">
+                                                    <svg fill="none" xmlns="http://www.w3.org/2000/svg"
+                                                        viewBox="0 0 24 24" width="22" height="22" stroke="#7367f0"
+                                                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                                        <path
+                                                            d="M9.35442 21C10.0596 21.6224 10.9858 22 12.0002 22C13.0147 22 13.9409 21.6224 14.6461 21M2.29414 5.81989C2.27979 4.36854 3.06227 3.01325 4.32635 2.3M21.7024 5.8199C21.7167 4.36855 20.9342 3.01325 19.6702 2.3M18.0002 8C18.0002 6.4087 17.3681 4.88258 16.2429 3.75736C15.1177 2.63214 13.5915 2 12.0002 2C10.4089 2 8.88283 2.63214 7.75761 3.75736C6.63239 4.88258 6.00025 6.4087 6.00025 8C6.00025 11.0902 5.22072 13.206 4.34991 14.6054C3.61538 15.7859 3.24811 16.3761 3.26157 16.5408C3.27649 16.7231 3.31511 16.7926 3.46203 16.9016C3.59471 17 4.19284 17 5.3891 17H18.6114C19.8077 17 20.4058 17 20.5385 16.9016C20.6854 16.7926 20.724 16.7231 20.7389 16.5408C20.7524 16.3761 20.3851 15.7859 19.6506 14.6054C18.7798 13.206 18.0002 11.0902 18.0002 8Z">
+                                                        </path>
+                                                    </svg>
+                                                </button>
+
+                                                <!-- Edit Patient Information -->
+                                                <button class="bg-transparent border-0 p-0 icon-btn"
+                                                    data-bs-toggle="tooltip" data-bs-placement="top"
+                                                    title="Edit Patient Information" style="height: 22px; width: 22px;">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                                                        fill="none" stroke="#7367f0" stroke-width="2"
+                                                        stroke-linecap="round" stroke-linejoin="round" width="22"
+                                                        height="22">
+                                                        <path
+                                                            d="M20,16v4a2,2,0,0,1-2,2H4a2,2,0,0,1-2-2V6A2,2,0,0,1,4,4H8">
+                                                        </path>
+                                                        <polygon
+                                                            points="12.5 15.8 22 6.2 17.8 2 8.3 11.5 8 16 12.5 15.8">
+                                                        </polygon>
+                                                    </svg>
+                                                </button>
+
+                                                <!-- Handle With Care -->
+                                                <button class="bg-transparent border-0 p-0 icon-btn"
+                                                    data-bs-toggle="tooltip" data-bs-placement="top"
+                                                    title="Handle with Care" style="height: 22px; width: 22px;">
+                                                    <svg fill="none" viewBox="0 0 32 32"
+                                                        xmlns="http://www.w3.org/2000/svg" stroke="#ea5455"
+                                                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                                        width="22" height="22">
+                                                        <path d="M29.531 25.471c-2.306-2.105-3.755-5.116-3.781-8.466l-0-0.005c0-8.295-4.532-12.307-9-12.71v-2.29
+      c0-0.414-0.336-0.75-0.75-0.75s-0.75 0.336-0.75 0.75v2.29c-4.469 0.403-9 4.415-9 12.71-0.046 3.349-1.489 6.353-3.771
+      8.462c-0.137 0.136-0.221 0.324-0.221 0.532c0 0.414 0.336 0.75 0.75 0.75h8.326c0.366 2.28 2.319 4 4.674 4s4.308-1.72
+      4.671-3.973h8.326c0.414 0 0.75-0.336 0.75-0.75C29.75 25.794 29.666 25.607 29.531 25.471z"></path>
+
+                                                        <!-- Exclamation mark inside -->
+                                                        <line x1="16" y1="11" x2="16" y2="18" stroke="#ea5455"
+                                                            stroke-width="2" stroke-linecap="round"></line>
+                                                        <circle cx="16" cy="22" r="1.2" fill="#ea5455"></circle>
+                                                    </svg>
+                                                </button>
+
+                                            </div>
+
+                                        </div>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <!-- All patient list -->
+                        <div class="allPatientList">
+                            <h1 class="appointmentstatusTitle mt-4">
+                                <i class="fa-solid fa-angle-down"></i> All Appointment
+                                Status
+                            </h1>
+                            <div class="d-flex border-bottom pb-2 justify-content-between align-items-center mt-4">
+                                <div
+                                    class="d-flex waiting_engagedcount justify-content-center align-items-center flex-column gap-1">
+                                    <p class="mb-0">Waiting</p>
+                                    <span class="badge rounded-pill bg-warning">10</span>
+                                </div>
+                                <div
+                                    class="d-flex waiting_engagedcount justify-content-center align-items-center flex-column gap-1">
+                                    <p class="mb-0">Engaged</p>
+                                    <span class="badge rounded-pill bg-info">555</span>
+                                </div>
+                                <div
+                                    class="d-flex waiting_engagedcount justify-content-center align-items-center flex-column gap-1">
+                                    <p class="mb-0">CheckOut</p>
+                                    <span class="badge rounded-pill bg-success">7</span>
+                                </div>
+                            </div>
+                            <ul class="patient_list mt-4 list-unstyled">
+                                <li>
+                                    <a href="#" class="d-flex p-2 justify-content-between align-items-start gap-2">
+                                        <div class="">
+                                            <h1>Mr. Romesh Patowary <span>(HTPL 20)</span></h1>
+                                            <p>New Appointment</p>
+                                            <h2>WS: 5H 28M</h2>
+                                        </div>
+                                        <div class="text-end " style="width: 127px;">
+                                            <p class="mb-1">10:30 AM</p>
+                                            <!-- Icon Buttons Group -->
+                                            <div class="d-flex flex-wrap gap-2 align-items-center justify-content-end">
+                                                <!-- Appointment Alert -->
+                                                <button class="bg-transparent border-0 p-0 icon-btn"
+                                                    data-bs-toggle="tooltip" data-bs-placement="top"
+                                                    title="Appointment Alert" style="height: 22px; width: 22px;">
+                                                    <svg fill="none" xmlns="http://www.w3.org/2000/svg"
+                                                        viewBox="0 0 448 448" width="22" height="22" stroke="#7367f0"
+                                                        fill="#7367f0" stroke-width="30" stroke-linecap="round"
+                                                        stroke-linejoin="round">
+                                                        <g>
+                                                            <path d="M310.66,185.477c15.238,9.838,28.614,22.096,39.756,36.436c1.577,2.029,3.938,3.091,6.323,3.091
+          c1.715,0,3.443-0.549,4.903-1.683c3.488-2.711,4.119-7.737,1.408-11.227c-12.251-15.765-26.958-29.242-43.713-40.059
+          c-3.711-2.396-8.665-1.329-11.06,2.382C305.882,178.129,306.948,183.081,310.66,185.477z"></path>
+                                                            <path d="M266.855,165.802c6.121,1.697,12.208,3.788,18.091,6.214c0.998,0.411,2.03,0.605,3.047,0.605
+          c3.144,0,6.126-1.865,7.399-4.952c1.684-4.085-0.263-8.762-4.347-10.446c-6.476-2.67-13.177-4.971-19.915-6.839
+          c-4.259-1.176-8.666,1.314-9.847,5.571C260.104,160.213,262.598,164.621,266.855,165.802z"></path>
+                                                            <path d="M432,344H256v-16h168c4.418,0,8-3.582,8-8c0-112.011-89.003-203.611-200-207.831V96c0-0.456-0.047-0.9-0.12-1.335
+          C241.253,91.396,248,82.474,248,72c0-13.233-10.767-24-24-24c-13.234,0-24,10.767-24,24c0,10.474,6.747,19.396,16.12,22.665
+          C216.047,95.1,216,95.544,216,96v16.169C105.003,116.389,16,207.989,16,320c0,4.418,3.582,8,8,8h168v16H16c-8.822,0-16,7.178-16,16
+          v24c0,8.822,7.178,16,16,16h416c8.822,0,16-7.178,16-16v-24C448,351.178,440.822,344,432,344z"></path>
+                                                        </g>
+                                                    </svg>
+                                                </button>
+
+                                                <!-- Send Notification -->
+                                                <button class="bg-transparent border-0 p-0 icon-btn"
+                                                    data-bs-toggle="tooltip" data-bs-placement="top"
+                                                    title="Send Notification" style="height: 22px; width: 22px;">
+                                                    <svg fill="none" xmlns="http://www.w3.org/2000/svg"
+                                                        viewBox="0 0 24 24" width="22" height="22" stroke="#7367f0"
+                                                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                                        <path
+                                                            d="M9.35442 21C10.0596 21.6224 10.9858 22 12.0002 22C13.0147 22 13.9409 21.6224 14.6461 21M2.29414 5.81989C2.27979 4.36854 3.06227 3.01325 4.32635 2.3M21.7024 5.8199C21.7167 4.36855 20.9342 3.01325 19.6702 2.3M18.0002 8C18.0002 6.4087 17.3681 4.88258 16.2429 3.75736C15.1177 2.63214 13.5915 2 12.0002 2C10.4089 2 8.88283 2.63214 7.75761 3.75736C6.63239 4.88258 6.00025 6.4087 6.00025 8C6.00025 11.0902 5.22072 13.206 4.34991 14.6054C3.61538 15.7859 3.24811 16.3761 3.26157 16.5408C3.27649 16.7231 3.31511 16.7926 3.46203 16.9016C3.59471 17 4.19284 17 5.3891 17H18.6114C19.8077 17 20.4058 17 20.5385 16.9016C20.6854 16.7926 20.724 16.7231 20.7389 16.5408C20.7524 16.3761 20.3851 15.7859 19.6506 14.6054C18.7798 13.206 18.0002 11.0902 18.0002 8Z">
+                                                        </path>
+                                                    </svg>
+                                                </button>
+
+                                                <!-- Edit Patient Information -->
+                                                <button class="bg-transparent border-0 p-0 icon-btn"
+                                                    data-bs-toggle="tooltip" data-bs-placement="top"
+                                                    title="Edit Patient Information" style="height: 22px; width: 22px;">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                                                        fill="none" stroke="#7367f0" stroke-width="2"
+                                                        stroke-linecap="round" stroke-linejoin="round" width="22"
+                                                        height="22">
+                                                        <path
+                                                            d="M20,16v4a2,2,0,0,1-2,2H4a2,2,0,0,1-2-2V6A2,2,0,0,1,4,4H8">
+                                                        </path>
+                                                        <polygon
+                                                            points="12.5 15.8 22 6.2 17.8 2 8.3 11.5 8 16 12.5 15.8">
+                                                        </polygon>
+                                                    </svg>
+                                                </button>
+
+                                                <!-- Handle With Care -->
+                                                <button class="bg-transparent border-0 p-0 icon-btn"
+                                                    data-bs-toggle="tooltip" data-bs-placement="top"
+                                                    title="Handle with Care" style="height: 22px; width: 22px;">
+                                                    <svg fill="none" viewBox="0 0 32 32"
+                                                        xmlns="http://www.w3.org/2000/svg" stroke="#ea5455"
+                                                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                                        width="22" height="22">
+                                                        <path d="M29.531 25.471c-2.306-2.105-3.755-5.116-3.781-8.466l-0-0.005c0-8.295-4.532-12.307-9-12.71v-2.29
+      c0-0.414-0.336-0.75-0.75-0.75s-0.75 0.336-0.75 0.75v2.29c-4.469 0.403-9 4.415-9 12.71-0.046 3.349-1.489 6.353-3.771
+      8.462c-0.137 0.136-0.221 0.324-0.221 0.532c0 0.414 0.336 0.75 0.75 0.75h8.326c0.366 2.28 2.319 4 4.674 4s4.308-1.72
+      4.671-3.973h8.326c0.414 0 0.75-0.336 0.75-0.75C29.75 25.794 29.666 25.607 29.531 25.471z"></path>
+
+                                                        <!-- Exclamation mark inside -->
+                                                        <line x1="16" y1="11" x2="16" y2="18" stroke="#ea5455"
+                                                            stroke-width="2" stroke-linecap="round"></line>
+                                                        <circle cx="16" cy="22" r="1.2" fill="#ea5455"></circle>
+                                                    </svg>
+                                                </button>
+
+                                            </div>
+
+                                        </div>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
 
+                <!-- Online patient list -->
+                <div class="OnlinePatient_list pt-4">
+                    <div class="today_or_all_select d-flex justify-content-between align-items-center">
+                        <button class="w-50 active TodayPatientBtn">Today(8)</button>
+                        <button class="w-50 allPatientBtn">All</button>
+                    </div>
+                    <div class="mt-4">
+                        <div class="d-flex justify-content-between align-items-center gap-2">
+                            <div class="position-relative">
+                                <input type="search" class="form-control pe-5" placeholder="Search" />
+                                <span class="position-absolute top-50 translate-middle-y" style="right: 10px"><i
+                                        class="fa-solid fa-magnifying-glass"></i></span>
+                            </div>
+                            <!-- Filter Button -->
+                            <div class="dropdown">
+                                <button class="filter_btn position-relative" type="button" id="filterBtn"
+                                    data-bs-toggle="dropdown" aria-expanded="false">
+                                    <i class="fa-solid fa-filter"></i>
+                                    <span id="filterIndicator"
+                                        class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-primary d-none">
+                                        0
+                                    </span>
+                                </button>
+
+                                <ul class="dropdown-menu dropdown-menu-end shadow border-0 p-3"
+                                    aria-labelledby="filterBtn" style="min-width: 220px">
+                                    <li class="dropdown-header fw-bold text-secondary mb-2">Filter by Status</li>
+                                    <li>
+                                        <label class="dropdown-item d-flex align-items-center py-2 filter-item">
+                                            <input type="checkbox" class="form-check-input me-3 filter-option"
+                                                value="waiting" />
+                                            <span class="status-indicator waiting-dot me-2"></span>
+                                            Waiting
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <label class="dropdown-item d-flex align-items-center py-2 filter-item">
+                                            <input type="checkbox" class="form-check-input me-3 filter-option"
+                                                value="engaged" />
+                                            <span class="status-indicator engaged-dot me-2"></span>
+                                            Engaged
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <label class="dropdown-item d-flex align-items-center py-2 filter-item">
+                                            <input type="checkbox" class="form-check-input me-3 filter-option"
+                                                value="confirmed" />
+                                            <span class="status-indicator confirmed-dot me-2"></span>
+                                            Confirmed
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <label class="dropdown-item d-flex align-items-center py-2 filter-item">
+                                            <input type="checkbox" class="form-check-input me-3 filter-option"
+                                                value="checkout" />
+                                            <span class="status-indicator checkout-dot me-2"></span>
+                                            Checkout
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <label class="dropdown-item d-flex align-items-center py-2 filter-item">
+                                            <input type="checkbox" class="form-check-input me-3 filter-option"
+                                                value="cancelled" />
+                                            <span class="status-indicator cancelled-dot me-2"></span>
+                                            Cancelled
+                                        </label>
+                                    </li>
+                                    <li class="dropdown-divider my-2"></li>
+                                    <li>
+                                        <button
+                                            class="btn btn-sm btn-outline-secondary w-100 d-flex align-items-center justify-content-center"
+                                            id="clearFilters">
+                                            <i class="fa-solid fa-rotate-left me-2"></i> Clear Filters
+                                        </button>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <!-- today patient list -->
+                        <div class="todayPatientList">
+                            <h1 class="appointmentstatusTitle mt-4">
+                                <i class="fa-solid fa-angle-down"></i> Today's Appointment
+                                Status
+                            </h1>
+                            <div class="d-flex border-bottom pb-2 justify-content-between align-items-center mt-4">
+                                <div
+                                    class="d-flex waiting_engagedcount justify-content-center align-items-center flex-column gap-1">
+                                    <p class="mb-0">Waiting</p>
+                                    <span class="badge rounded-pill bg-warning">10</span>
+                                </div>
+                                <div
+                                    class="d-flex waiting_engagedcount justify-content-center align-items-center flex-column gap-1">
+                                    <p class="mb-0">Engaged</p>
+                                    <span class="badge rounded-pill bg-info">555</span>
+                                </div>
+                                <div
+                                    class="d-flex waiting_engagedcount justify-content-center align-items-center flex-column gap-1">
+                                    <p class="mb-0">CheckOut</p>
+                                    <span class="badge rounded-pill bg-success">7</span>
+                                </div>
+                            </div>
+                            <ul class="patient_list mt-4 list-unstyled">
+                                <li>
+                                    <a href="#" class="d-flex p-2 justify-content-between align-items-start gap-2">
+                                        <div class="">
+                                            <h1>Mr. Romesh Patowary <span>(HTPL 20)</span></h1>
+                                            <p>New Appointment</p>
+                                            <h2>WS: 5H 28M</h2>
+                                        </div>
+                                        <div class="text-end " style="width: 127px;">
+                                            <p class="mb-1">10:30 AM</p>
+                                            <!-- Icon Buttons Group -->
+                                            <div class="d-flex flex-wrap gap-2 align-items-center justify-content-end">
+                                                <!-- Appointment Alert -->
+                                                <button class="bg-transparent border-0 p-0 icon-btn"
+                                                    data-bs-toggle="tooltip" data-bs-placement="top"
+                                                    title="Appointment Alert" style="height: 22px; width: 22px;">
+                                                    <svg fill="none" xmlns="http://www.w3.org/2000/svg"
+                                                        viewBox="0 0 448 448" width="22" height="22" stroke="#7367f0"
+                                                        fill="#7367f0" stroke-width="30" stroke-linecap="round"
+                                                        stroke-linejoin="round">
+                                                        <g>
+                                                            <path d="M310.66,185.477c15.238,9.838,28.614,22.096,39.756,36.436c1.577,2.029,3.938,3.091,6.323,3.091
+          c1.715,0,3.443-0.549,4.903-1.683c3.488-2.711,4.119-7.737,1.408-11.227c-12.251-15.765-26.958-29.242-43.713-40.059
+          c-3.711-2.396-8.665-1.329-11.06,2.382C305.882,178.129,306.948,183.081,310.66,185.477z"></path>
+                                                            <path d="M266.855,165.802c6.121,1.697,12.208,3.788,18.091,6.214c0.998,0.411,2.03,0.605,3.047,0.605
+          c3.144,0,6.126-1.865,7.399-4.952c1.684-4.085-0.263-8.762-4.347-10.446c-6.476-2.67-13.177-4.971-19.915-6.839
+          c-4.259-1.176-8.666,1.314-9.847,5.571C260.104,160.213,262.598,164.621,266.855,165.802z"></path>
+                                                            <path d="M432,344H256v-16h168c4.418,0,8-3.582,8-8c0-112.011-89.003-203.611-200-207.831V96c0-0.456-0.047-0.9-0.12-1.335
+          C241.253,91.396,248,82.474,248,72c0-13.233-10.767-24-24-24c-13.234,0-24,10.767-24,24c0,10.474,6.747,19.396,16.12,22.665
+          C216.047,95.1,216,95.544,216,96v16.169C105.003,116.389,16,207.989,16,320c0,4.418,3.582,8,8,8h168v16H16c-8.822,0-16,7.178-16,16
+          v24c0,8.822,7.178,16,16,16h416c8.822,0,16-7.178,16-16v-24C448,351.178,440.822,344,432,344z"></path>
+                                                        </g>
+                                                    </svg>
+                                                </button>
+
+                                                <!-- Send Notification -->
+                                                <button class="bg-transparent border-0 p-0 icon-btn"
+                                                    data-bs-toggle="tooltip" data-bs-placement="top"
+                                                    title="Send Notification" style="height: 22px; width: 22px;">
+                                                    <svg fill="none" xmlns="http://www.w3.org/2000/svg"
+                                                        viewBox="0 0 24 24" width="22" height="22" stroke="#7367f0"
+                                                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                                        <path
+                                                            d="M9.35442 21C10.0596 21.6224 10.9858 22 12.0002 22C13.0147 22 13.9409 21.6224 14.6461 21M2.29414 5.81989C2.27979 4.36854 3.06227 3.01325 4.32635 2.3M21.7024 5.8199C21.7167 4.36855 20.9342 3.01325 19.6702 2.3M18.0002 8C18.0002 6.4087 17.3681 4.88258 16.2429 3.75736C15.1177 2.63214 13.5915 2 12.0002 2C10.4089 2 8.88283 2.63214 7.75761 3.75736C6.63239 4.88258 6.00025 6.4087 6.00025 8C6.00025 11.0902 5.22072 13.206 4.34991 14.6054C3.61538 15.7859 3.24811 16.3761 3.26157 16.5408C3.27649 16.7231 3.31511 16.7926 3.46203 16.9016C3.59471 17 4.19284 17 5.3891 17H18.6114C19.8077 17 20.4058 17 20.5385 16.9016C20.6854 16.7926 20.724 16.7231 20.7389 16.5408C20.7524 16.3761 20.3851 15.7859 19.6506 14.6054C18.7798 13.206 18.0002 11.0902 18.0002 8Z">
+                                                        </path>
+                                                    </svg>
+                                                </button>
+
+                                                <!-- Edit Patient Information -->
+                                                <button class="bg-transparent border-0 p-0 icon-btn"
+                                                    data-bs-toggle="tooltip" data-bs-placement="top"
+                                                    title="Edit Patient Information" style="height: 22px; width: 22px;">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                                                        fill="none" stroke="#7367f0" stroke-width="2"
+                                                        stroke-linecap="round" stroke-linejoin="round" width="22"
+                                                        height="22">
+                                                        <path
+                                                            d="M20,16v4a2,2,0,0,1-2,2H4a2,2,0,0,1-2-2V6A2,2,0,0,1,4,4H8">
+                                                        </path>
+                                                        <polygon
+                                                            points="12.5 15.8 22 6.2 17.8 2 8.3 11.5 8 16 12.5 15.8">
+                                                        </polygon>
+                                                    </svg>
+                                                </button>
+
+                                                <!-- Handle With Care -->
+                                                <button class="bg-transparent border-0 p-0 icon-btn"
+                                                    data-bs-toggle="tooltip" data-bs-placement="top"
+                                                    title="Handle with Care" style="height: 22px; width: 22px;">
+                                                    <svg fill="none" viewBox="0 0 32 32"
+                                                        xmlns="http://www.w3.org/2000/svg" stroke="#ea5455"
+                                                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                                        width="22" height="22">
+                                                        <path d="M29.531 25.471c-2.306-2.105-3.755-5.116-3.781-8.466l-0-0.005c0-8.295-4.532-12.307-9-12.71v-2.29
+      c0-0.414-0.336-0.75-0.75-0.75s-0.75 0.336-0.75 0.75v2.29c-4.469 0.403-9 4.415-9 12.71-0.046 3.349-1.489 6.353-3.771
+      8.462c-0.137 0.136-0.221 0.324-0.221 0.532c0 0.414 0.336 0.75 0.75 0.75h8.326c0.366 2.28 2.319 4 4.674 4s4.308-1.72
+      4.671-3.973h8.326c0.414 0 0.75-0.336 0.75-0.75C29.75 25.794 29.666 25.607 29.531 25.471z"></path>
+
+                                                        <!-- Exclamation mark inside -->
+                                                        <line x1="16" y1="11" x2="16" y2="18" stroke="#ea5455"
+                                                            stroke-width="2" stroke-linecap="round"></line>
+                                                        <circle cx="16" cy="22" r="1.2" fill="#ea5455"></circle>
+                                                    </svg>
+                                                </button>
+
+                                            </div>
+
+                                        </div>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <!-- All patient list -->
+                        <div class="allPatientList">
+                            <h1 class="appointmentstatusTitle mt-4">
+                                <i class="fa-solid fa-angle-down"></i> All Appointment
+                                Status
+                            </h1>
+                            <div class="d-flex border-bottom pb-2 justify-content-between align-items-center mt-4">
+                                <div
+                                    class="d-flex waiting_engagedcount justify-content-center align-items-center flex-column gap-1">
+                                    <p class="mb-0">Waiting</p>
+                                    <span class="badge rounded-pill bg-warning">10</span>
+                                </div>
+                                <div
+                                    class="d-flex waiting_engagedcount justify-content-center align-items-center flex-column gap-1">
+                                    <p class="mb-0">Engaged</p>
+                                    <span class="badge rounded-pill bg-info">555</span>
+                                </div>
+                                <div
+                                    class="d-flex waiting_engagedcount justify-content-center align-items-center flex-column gap-1">
+                                    <p class="mb-0">CheckOut</p>
+                                    <span class="badge rounded-pill bg-success">7</span>
+                                </div>
+                            </div>
+                            <ul class="patient_list mt-4 list-unstyled">
+                                <li>
+                                    <a href="#" class="d-flex p-2 justify-content-between align-items-start gap-2">
+                                        <div class="">
+                                            <h1>Mr. Romesh Patowary <span>(HTPL 20)</span></h1>
+                                            <p>New Appointment</p>
+                                            <h2>WS: 5H 28M</h2>
+                                        </div>
+                                        <div class="text-end " style="width: 127px;">
+                                            <p class="mb-1">10:30 AM</p>
+                                            <!-- Icon Buttons Group -->
+                                            <div class="d-flex flex-wrap gap-2 align-items-center justify-content-end">
+                                                <!-- Appointment Alert -->
+                                                <button class="bg-transparent border-0 p-0 icon-btn"
+                                                    data-bs-toggle="tooltip" data-bs-placement="top"
+                                                    title="Appointment Alert" style="height: 22px; width: 22px;">
+                                                    <svg fill="none" xmlns="http://www.w3.org/2000/svg"
+                                                        viewBox="0 0 448 448" width="22" height="22" stroke="#7367f0"
+                                                        fill="#7367f0" stroke-width="30" stroke-linecap="round"
+                                                        stroke-linejoin="round">
+                                                        <g>
+                                                            <path d="M310.66,185.477c15.238,9.838,28.614,22.096,39.756,36.436c1.577,2.029,3.938,3.091,6.323,3.091
+          c1.715,0,3.443-0.549,4.903-1.683c3.488-2.711,4.119-7.737,1.408-11.227c-12.251-15.765-26.958-29.242-43.713-40.059
+          c-3.711-2.396-8.665-1.329-11.06,2.382C305.882,178.129,306.948,183.081,310.66,185.477z"></path>
+                                                            <path d="M266.855,165.802c6.121,1.697,12.208,3.788,18.091,6.214c0.998,0.411,2.03,0.605,3.047,0.605
+          c3.144,0,6.126-1.865,7.399-4.952c1.684-4.085-0.263-8.762-4.347-10.446c-6.476-2.67-13.177-4.971-19.915-6.839
+          c-4.259-1.176-8.666,1.314-9.847,5.571C260.104,160.213,262.598,164.621,266.855,165.802z"></path>
+                                                            <path d="M432,344H256v-16h168c4.418,0,8-3.582,8-8c0-112.011-89.003-203.611-200-207.831V96c0-0.456-0.047-0.9-0.12-1.335
+          C241.253,91.396,248,82.474,248,72c0-13.233-10.767-24-24-24c-13.234,0-24,10.767-24,24c0,10.474,6.747,19.396,16.12,22.665
+          C216.047,95.1,216,95.544,216,96v16.169C105.003,116.389,16,207.989,16,320c0,4.418,3.582,8,8,8h168v16H16c-8.822,0-16,7.178-16,16
+          v24c0,8.822,7.178,16,16,16h416c8.822,0,16-7.178,16-16v-24C448,351.178,440.822,344,432,344z"></path>
+                                                        </g>
+                                                    </svg>
+                                                </button>
+
+                                                <!-- Send Notification -->
+                                                <button class="bg-transparent border-0 p-0 icon-btn"
+                                                    data-bs-toggle="tooltip" data-bs-placement="top"
+                                                    title="Send Notification" style="height: 22px; width: 22px;">
+                                                    <svg fill="none" xmlns="http://www.w3.org/2000/svg"
+                                                        viewBox="0 0 24 24" width="22" height="22" stroke="#7367f0"
+                                                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                                        <path
+                                                            d="M9.35442 21C10.0596 21.6224 10.9858 22 12.0002 22C13.0147 22 13.9409 21.6224 14.6461 21M2.29414 5.81989C2.27979 4.36854 3.06227 3.01325 4.32635 2.3M21.7024 5.8199C21.7167 4.36855 20.9342 3.01325 19.6702 2.3M18.0002 8C18.0002 6.4087 17.3681 4.88258 16.2429 3.75736C15.1177 2.63214 13.5915 2 12.0002 2C10.4089 2 8.88283 2.63214 7.75761 3.75736C6.63239 4.88258 6.00025 6.4087 6.00025 8C6.00025 11.0902 5.22072 13.206 4.34991 14.6054C3.61538 15.7859 3.24811 16.3761 3.26157 16.5408C3.27649 16.7231 3.31511 16.7926 3.46203 16.9016C3.59471 17 4.19284 17 5.3891 17H18.6114C19.8077 17 20.4058 17 20.5385 16.9016C20.6854 16.7926 20.724 16.7231 20.7389 16.5408C20.7524 16.3761 20.3851 15.7859 19.6506 14.6054C18.7798 13.206 18.0002 11.0902 18.0002 8Z">
+                                                        </path>
+                                                    </svg>
+                                                </button>
+
+                                                <!-- Edit Patient Information -->
+                                                <button class="bg-transparent border-0 p-0 icon-btn"
+                                                    data-bs-toggle="tooltip" data-bs-placement="top"
+                                                    title="Edit Patient Information" style="height: 22px; width: 22px;">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                                                        fill="none" stroke="#7367f0" stroke-width="2"
+                                                        stroke-linecap="round" stroke-linejoin="round" width="22"
+                                                        height="22">
+                                                        <path
+                                                            d="M20,16v4a2,2,0,0,1-2,2H4a2,2,0,0,1-2-2V6A2,2,0,0,1,4,4H8">
+                                                        </path>
+                                                        <polygon
+                                                            points="12.5 15.8 22 6.2 17.8 2 8.3 11.5 8 16 12.5 15.8">
+                                                        </polygon>
+                                                    </svg>
+                                                </button>
+
+                                                <!-- Handle With Care -->
+                                                <button class="bg-transparent border-0 p-0 icon-btn"
+                                                    data-bs-toggle="tooltip" data-bs-placement="top"
+                                                    title="Handle with Care" style="height: 22px; width: 22px;">
+                                                    <svg fill="none" viewBox="0 0 32 32"
+                                                        xmlns="http://www.w3.org/2000/svg" stroke="#ea5455"
+                                                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                                        width="22" height="22">
+                                                        <path d="M29.531 25.471c-2.306-2.105-3.755-5.116-3.781-8.466l-0-0.005c0-8.295-4.532-12.307-9-12.71v-2.29
+      c0-0.414-0.336-0.75-0.75-0.75s-0.75 0.336-0.75 0.75v2.29c-4.469 0.403-9 4.415-9 12.71-0.046 3.349-1.489 6.353-3.771
+      8.462c-0.137 0.136-0.221 0.324-0.221 0.532c0 0.414 0.336 0.75 0.75 0.75h8.326c0.366 2.28 2.319 4 4.674 4s4.308-1.72
+      4.671-3.973h8.326c0.414 0 0.75-0.336 0.75-0.75C29.75 25.794 29.666 25.607 29.531 25.471z"></path>
+
+                                                        <!-- Exclamation mark inside -->
+                                                        <line x1="16" y1="11" x2="16" y2="18" stroke="#ea5455"
+                                                            stroke-width="2" stroke-linecap="round"></line>
+                                                        <circle cx="16" cy="22" r="1.2" fill="#ea5455"></circle>
+                                                    </svg>
+                                                </button>
+
+                                            </div>
+
+                                        </div>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
             </div>
+            </div>
+            
+        </div>
+        <!-- right content area end  -->
+        <div class="patient_details_area">
+            <div class="d-flex justify-content-between align-items-start flex-lg-row flex-column-reverse gap-2">
+                <div class="patient_info_details_area d-flex align-items-start pt-2">
+                    <div class="patient_avatart">
+                        R
+                    </div>
+                    <div class="patient_info_details ms-3">
+                        <div class="d-flex patient_info_header justify-content-start flex-xxl-row flex-column-reverse align-items-start gap-2">
+                            <h1 class="text-nowrap">(HTPL 20) Mr. Romesh Patowary fsfsfsf fssf  </h1>
+                            <div class="d-flex justify-content-start align-items-start gap-2">
+                                <button class="editBtn"><i class="fa-solid fa-pen"></i></button>
+                            <button class="infoBtn"><i class="fa-solid fa-circle-info"></i></button>
+                            <button class="billBtn">Bill</button>
+                            <button class="patientReportBtn"> Patient Report</button>
+                            </div>
+                        </div>
+                        <div class=" d-flex justify-content-start gap-2">
+                            <!-- Handle With Care -->
+                            <button class="bg-transparent border-0 p-0 icon-btn" data-bs-toggle="tooltip"
+                                data-bs-placement="top" title="Handle with Care" >
+                                <svg fill="none" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" stroke="#ea5455"
+                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="16"
+                                    height="16">
+                                    <path d="M29.531 25.471c-2.306-2.105-3.755-5.116-3.781-8.466l-0-0.005c0-8.295-4.532-12.307-9-12.71v-2.29
+      c0-0.414-0.336-0.75-0.75-0.75s-0.75 0.336-0.75 0.75v2.29c-4.469 0.403-9 4.415-9 12.71-0.046 3.349-1.489 6.353-3.771
+      8.462c-0.137 0.136-0.221 0.324-0.221 0.532c0 0.414 0.336 0.75 0.75 0.75h8.326c0.366 2.28 2.319 4 4.674 4s4.308-1.72
+      4.671-3.973h8.326c0.414 0 0.75-0.336 0.75-0.75C29.75 25.794 29.666 25.607 29.531 25.471z"></path>
+
+                                    <!-- Exclamation mark inside -->
+                                    <line x1="16" y1="11" x2="16" y2="18" stroke="#ea5455" stroke-width="2"
+                                        stroke-linecap="round"></line>
+                                    <circle cx="16" cy="22" r="1.2" fill="#ea5455"></circle>
+                                </svg>
+                            </button>
+                            <p>Male, 20Y</p>
+                        </div>
+                        <h2 class="mb-0">Ref. By: Dr. Rokesh</h2>
+                    </div>
+                </div>
+                <div class="d-flex justify-content-between align-items-start w-100 flex-column-reverse flex-xl-row gap-2">
+                    <div class="global_search_area position-relative w-100">
+                    <input type="search" class="form-control pe-5" placeholder="Global Search" />
+                    <button class="bg-transparent border-0 p-0 position-absolute top-50 translate-middle-y" style="right: 10px;">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                    </button>
+                </div>
+                <div class="global_button_group d-flex justify-content-xl-between justify-content-lg-end justify-content-center w-100 align-items-center gap-2 pt-2">
+                    <button>admit</button>
+                    <button>appt</button>
+                    <button>+patient</button>
+                    <button>send order</button>
+                </div>
+                </div>
+            </div>
+
         </div>
     </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
     <script src="main.js"></script>
-    
+    <script>
+        // stop propagation on all icon buttons
+        document.querySelectorAll('.icon-btn').forEach(btn => {
+            btn.addEventListener('click', e => {
+                e.stopPropagation();
+                e.preventDefault();
+                console.log('Icon button clicked:', btn.title);
+                // এখানে তুমি আলাদা action লিখতে পারো, যেমন:
+                // if (btn.title === "Edit Patient Information") { ... }
+            });
+        });
+        // Initialize Bootstrap tooltips
+        const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]');
+        [...tooltipTriggerList].map((el) => new bootstrap.Tooltip(el));
+    </script>
 </body>
 
 </html>
