@@ -356,11 +356,113 @@ $(document).ready(function() {
 });
 
 $(document).ready(function() {
-    $('#symptomSearch').on('keyup', function() {
-        var searchValue = $(this).val().toLowerCase().trim();
+   $('#symptomSearch').on('keyup', function() {
+    var searchValue = $(this).val().toLowerCase().trim();
+    var visibleCount = 0;
 
-        $('.history_symptoms_item').filter(function() {
-            $(this).toggle($(this).text().toLowerCase().indexOf(searchValue) > -1);
-        });
+    $('.history_symptoms_item').each(function() {
+        var match = $(this).text().toLowerCase().indexOf(searchValue) > -1;
+        $(this).toggle(match);
+        if (match) visibleCount++;
     });
+
+    if (visibleCount === 0) {
+        if ($('#noResultMsg').length === 0) {
+            $('.history_symptoms_list_area').append('<div id="noResultMsg" class="text-muted">No results found</div>');
+        }
+    } else {
+        $('#noResultMsg').remove();
+    }
+});
+
+});
+
+$(function () {
+  const mainTable = $("#questionTable");
+
+  // Enable sorting for main questions
+  makeSortable(mainTable, "questionOrder");
+
+  // When "Add Sub Question" clicked
+  $(document).on("click", ".addSubquestion", function () {
+    const parentRow = $(this).closest("tr");
+    const subArea = parentRow.find(".subQuestionArea");
+    const subTable = subArea.find(".subQuestionTable");
+
+    // If hidden, show it
+    if (subArea.hasClass("d-none")) {
+      subArea.removeClass("d-none");
+      parentRow.find(".toggleSubBtn").removeClass("d-none");
+      parentRow.find(".toggleSubBtn i").addClass("fa-rotate-90");
+    }
+
+    // Create new sub-question row
+    const newId = "sub-" + Date.now();
+    const subRow = `
+      <tr data-id="${newId}" class="subQuestionRow">
+        <td style="width:40px;">
+          <div class="d-flex justify-content-start align-items-center h-100">
+            <button class="row_move_btn"><i class="fa-solid fa-grip-vertical"></i></button>
+          </div>
+        </td>
+        <td>
+          <div class="questionmaintain_area d-flex justify-content-between align-items-center gap-3">
+            <h1 class="mb-0 subQuestionTitle">New Sub Question</h1>
+            <div class="d-flex justify-content-end align-items-center gap-3">
+              <button class="deleteQuestion">Delete</button>
+              <button class="visible_hideBtn"><i class="fa-solid fa-eye-slash"></i></button>
+            </div>
+          </div>
+        </td>
+      </tr>`;
+    subTable.append(subRow);
+
+    // Enable sorting on this subquestion table
+    makeSortable(subTable, "subOrder_" + parentRow.data("id"));
+  });
+
+  // Toggle subquestion area
+  $(document).on("click", ".toggleSubBtn", function () {
+    const btn = $(this);
+    const area = btn.closest("tr").find(".subQuestionArea");
+    area.toggleClass("d-none");
+    btn.find("i").toggleClass("fa-rotate-90");
+  });
+
+  // Helper function
+  function makeSortable(table, key) {
+    table.sortable({
+      handle: ".row_move_btn",
+      placeholder: "sortable-placeholder",
+      helper: "clone",
+      appendTo: "body",
+      cancel: "input,textarea,select,option",
+      zIndex: 99999,
+      start: function (e, ui) {
+        ui.placeholder.height(ui.helper.outerHeight());
+      },
+      update: function () {
+        const newOrder = [];
+        table.children("tr").each(function () {
+          newOrder.push($(this).attr("data-id"));
+        });
+        localStorage.setItem(key, JSON.stringify(newOrder));
+      },
+    }).disableSelection();
+  }
+});
+
+// Toggle visible/hide eye icon per row
+$(document).on("click", ".visible_hideBtn", function () {
+    const icon = $(this).find("i");
+    const row = $(this).closest("tr");
+
+    // Toggle icon class
+    if (icon.hasClass("fa-eye-slash")) {
+        icon.removeClass("fa-eye-slash").addClass("fa-eye");
+        row.addClass("question-hidden"); // optional for visual effect
+    } else {
+        icon.removeClass("fa-eye").addClass("fa-eye-slash");
+        row.removeClass("question-hidden");
+    }
 });
