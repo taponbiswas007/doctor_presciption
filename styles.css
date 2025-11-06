@@ -590,9 +590,12 @@ button {
 .row_move_btn {
     font-size: 20px;
     color: #363636;
-    cursor: move !important;
-
+    cursor: grab !important;      /* 👈 better UX for drag handles */
+    touch-action: none;           /* 👈 prevents screen from scrolling while dragging */
+    -webkit-user-select: none;    /* 👈 stops accidental text selection */
+    user-select: none;
 }
+
 
 .questionmaintain_area {
     -webkit-box-shadow: -1px 3px 4px -3px rgba(0, 0, 0, 0.78);
