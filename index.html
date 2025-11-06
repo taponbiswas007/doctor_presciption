@@ -12,7 +12,7 @@
         href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
         rel="stylesheet" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
-
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.2/themes/smoothness/jquery-ui.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" />
     <link rel="stylesheet" href="styles.css" />
 </head>
@@ -1077,34 +1077,326 @@
                         aria-hidden="true">
                         <div class="modal-dialog modal-dialog-centered modal-xl">
                             <div class="modal-content">
-                                <div class="modal-header">
-                                    <div class="row w-100">
+                                <div class="modal-body">
+                                    <div class="row flex-column-reverse flex-xl-row g-4">
                                         <div class="col-xl-4">
-                                           <h1 class="modal-title fs-6">History/Complains/Symptomps</h1>
+                                            <div class="border-bottom pb-2 mb-3">
+                                                <h1 class="modal-title fs-6">History/Complains/Symptomps</h1>
+                                            </div>
+                                            <div class="history_symptoms_area">
+                                                <div class="bg-white position-sticky top-0 p-2">
+                                                    <input type="search" id="symptomSearch" class="form-control"
+                                                        placeholder="Search symptoms...">
+                                                </div>
+                                                <div class="d-flex flex-wrap gap-2 mt-3 history_symptoms_list_area p-2">
+                                                    <button class="history_symptoms_item">Fever</button>
+                                                    <button class="history_symptoms_item">Cough</button>
+                                                    <button class="history_symptoms_item">Headache</button>
+                                                    <button class="history_symptoms_item">Nausea</button>
+                                                    <button class="history_symptoms_item">Fatigue</button>
+                                                    <button class="history_symptoms_item">Dizziness</button>
+                                                    <button class="history_symptoms_item">Sore Throat</button>
+                                                    <button class="history_symptoms_item">Shortness of Breath</button>
+                                                    <button class="history_symptoms_item">Chest Pain</button>
+                                                    <button class="history_symptoms_item">Abdominal Pain</button>
+                                                    <button class="history_symptoms_item">Diarrhea</button>
+                                                    <button class="history_symptoms_item">Constipation</button>
+                                                    <button class="history_symptoms_item">Back Pain</button>
+                                                    <button class="history_symptoms_item">Muscle Ache</button>
+                                                    <button class="history_symptoms_item">Joint Pain</button>
+                                                </div>
+                                            </div>
+
                                         </div>
                                         <div class="col-xl-8">
-                                            <div class="d-flex justify-content-between align-items-center w-100">
-                                                 <div class="d-flex justify-content-start align-items-center gap-3">
-                                        <h1 class="modal-title fs-5" id="settingsBtnLabel">Detailed Information of <span class="text-danger">Fever</span></h1>
-                                    </div>
-                                    <div class="d-flex justify-content-end align-items-center gap-3">
-                                        <button class="addQuestion withBg_Btn">Add Question</button>
-                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                        aria-label="Close"></button>
-                                    </div>
+                                            <div
+                                                class="d-flex justify-content-between align-items-center w-100 border-bottom pb-2 mb-3 gap-3 question_header_area">
+                                                <div class="d-flex justify-content-start align-items-center gap-3">
+                                                    <h1 class="modal-title addquestionTitle" id="settingsBtnLabel">
+                                                        Detailed
+                                                        Information of <span class="text-danger">Fever</span></h1>
+                                                </div>
+                                                <div class="d-flex justify-content-end align-items-center gap-3">
+                                                    <button class="addQuestion withBg_Btn text-nowrap">Add
+                                                        Question</button>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                        aria-label="Close"></button>
+                                                </div>
+                                            </div>
+                                            <div class="question_table">
+                                                <div class="table-responsive">
+                                                    <table
+                                                        class="table text-nowrap border-white text-center align-middle">
+                                                        <tbody id="questionTable">
+                                                            <tr data-id="1">
+                                                                <td style="width: 40px;">
+                                                                    <div
+                                                                        class="d-flex justify-content-start align-items-center h-100">
+                                                                        <button class="row_move_btn">
+                                                                            <i class="fa-solid fa-grip-vertical"></i>
+                                                                        </button>
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <div
+                                                                        class="questionmaintain_area d-flex justify-content-between align-items-center gap-3">
+                                                                        <h1>Rigor</h1>
+                                                                        <div
+                                                                            class="d-flex justify-content-end align-items-center gap-3">
+                                                                            <button class="addSubquestion">Add Sub
+                                                                                Question</button>
+                                                                            <button class="deleteQuestion">Delete
+                                                                                Question</button>
+                                                                            <button class="visible_hideBtn">
+                                                                                <i class="fa-solid fa-eye-slash"></i>
+                                                                            </button>
+                                                                        </div>
+                                                                    </div>
+                                                                </td>
+                                                            </tr>
+                                                            <tr data-id="2">
+                                                                <td style="width: 40px;">
+                                                                    <div
+                                                                        class="d-flex justify-content-start align-items-center">
+                                                                        <button class="row_move_btn">
+                                                                            <i class="fa-solid fa-grip-vertical"></i>
+                                                                        </button>
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <div
+                                                                        class="questionmaintain_area d-flex justify-content-between align-items-center gap-3">
+                                                                        <h1>Severity</h1>
+                                                                        <div
+                                                                            class="d-flex justify-content-end align-items-center gap-3">
+                                                                            <button class="addSubquestion">Add Sub
+                                                                                Question</button>
+                                                                            <button class="deleteQuestion">Delete
+                                                                                Question</button>
+                                                                            <button class="visible_hideBtn">
+                                                                                <i class="fa-solid fa-eye-slash"></i>
+                                                                            </button>
+                                                                        </div>
+                                                                    </div>
+                                                                </td>
+                                                            </tr>
+                                                            <tr data-id="3">
+                                                                <td style="width: 40px;">
+                                                                    <div
+                                                                        class="d-flex justify-content-start align-items-center">
+                                                                        <button class="row_move_btn">
+                                                                            <i class="fa-solid fa-grip-vertical"></i>
+                                                                        </button>
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <div
+                                                                        class="questionmaintain_area d-flex justify-content-between align-items-center gap-3">
+                                                                        <h1>Duration</h1>
+                                                                        <div
+                                                                            class="d-flex justify-content-end align-items-center gap-3">
+                                                                            <button class="addSubquestion">Add Sub
+                                                                                Question</button>
+                                                                            <button class="deleteQuestion">Delete
+                                                                                Question</button>
+                                                                            <button class="visible_hideBtn">
+                                                                                <i class="fa-solid fa-eye-slash"></i>
+                                                                            </button>
+                                                                        </div>
+                                                                    </div>
+                                                                </td>
+                                                            </tr>
+                                                            <tr data-id="4">
+                                                                <td style="width: 40px;">
+                                                                    <div
+                                                                        class="d-flex justify-content-start align-items-center">
+                                                                        <button class="row_move_btn">
+                                                                            <i class="fa-solid fa-grip-vertical"></i>
+                                                                        </button>
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <div
+                                                                        class="questionmaintain_area d-flex justify-content-between align-items-center gap-3">
+                                                                        <h1>Details</h1>
+                                                                        <div
+                                                                            class="d-flex justify-content-end align-items-center gap-3">
+                                                                            <button class="addSubquestion">Add Sub
+                                                                                Question</button>
+                                                                            <button class="deleteQuestion">Delete
+                                                                                Question</button>
+                                                                            <button class="visible_hideBtn">
+                                                                                <i class="fa-solid fa-eye-slash"></i>
+                                                                            </button>
+                                                                        </div>
+                                                                    </div>
+                                                                </td>
+                                                            </tr>
+                                                            <tr data-id="5">
+                                                                <td style="width: 40px;">
+                                                                    <div
+                                                                        class="d-flex justify-content-start align-items-center">
+                                                                        <button class="row_move_btn">
+                                                                            <i class="fa-solid fa-grip-vertical"></i>
+                                                                        </button>
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <div
+                                                                        class="questionmaintain_area d-flex justify-content-between align-items-center gap-3">
+                                                                        <h1>Frequency</h1>
+                                                                        <div
+                                                                            class="d-flex justify-content-end align-items-center gap-3">
+                                                                            <button class="addSubquestion">Add Sub
+                                                                                Question</button>
+                                                                            <button class="deleteQuestion">Delete
+                                                                                Question</button>
+                                                                            <button class="visible_hideBtn">
+                                                                                <i class="fa-solid fa-eye-slash"></i>
+                                                                            </button>
+                                                                        </div>
+                                                                    </div>
+                                                                </td>
+                                                            </tr>
+                                                            <tr data-id="6">
+                                                                <td style="width: 40px;">
+                                                                    <div
+                                                                        class="d-flex justify-content-start align-items-center">
+                                                                        <button class="row_move_btn">
+                                                                            <i class="fa-solid fa-grip-vertical"></i>
+                                                                        </button>
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <div
+                                                                        class="questionmaintain_area d-flex justify-content-between align-items-center gap-3">
+                                                                        <h1>Impact</h1>
+                                                                        <div
+                                                                            class="d-flex justify-content-end align-items-center gap-3">
+                                                                            <button class="addSubquestion">Add Sub
+                                                                                Question</button>
+                                                                            <button class="deleteQuestion">Delete
+                                                                                Question</button>
+                                                                            <button class="visible_hideBtn">
+                                                                                <i class="fa-solid fa-eye-slash"></i>
+                                                                            </button>
+                                                                        </div>
+                                                                    </div>
+                                                                </td>
+                                                            </tr>
+                                                            <tr data-id="7">
+                                                                <td style="width: 40px;">
+                                                                    <div
+                                                                        class="d-flex justify-content-start align-items-center">
+                                                                        <button class="row_move_btn">
+                                                                            <i class="fa-solid fa-grip-vertical"></i>
+                                                                        </button>
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <div
+                                                                        class="questionmaintain_area d-flex justify-content-between align-items-center gap-3">
+                                                                        <h1>Scope</h1>
+                                                                        <div
+                                                                            class="d-flex justify-content-end align-items-center gap-3">
+                                                                            <button class="addSubquestion">Add Sub
+                                                                                Question</button>
+                                                                            <button class="deleteQuestion">Delete
+                                                                                Question</button>
+                                                                            <button class="visible_hideBtn">
+                                                                                <i class="fa-solid fa-eye-slash"></i>
+                                                                            </button>
+                                                                        </div>
+                                                                    </div>
+                                                                </td>
+                                                            </tr>
+                                                            <tr data-id="8">
+                                                                <td style="width: 40px;">
+                                                                    <div
+                                                                        class="d-flex justify-content-start align-items-center">
+                                                                        <button class="row_move_btn">
+                                                                            <i class="fa-solid fa-grip-vertical"></i>
+                                                                        </button>
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <div
+                                                                        class="questionmaintain_area d-flex justify-content-between align-items-center gap-3">
+                                                                        <h1>Complexity</h1>
+                                                                        <div
+                                                                            class="d-flex justify-content-end align-items-center gap-3">
+                                                                            <button class="addSubquestion">Add Sub
+                                                                                Question</button>
+                                                                            <button class="deleteQuestion">Delete
+                                                                                Question</button>
+                                                                            <button class="visible_hideBtn">
+                                                                                <i class="fa-solid fa-eye-slash"></i>
+                                                                            </button>
+                                                                        </div>
+                                                                    </div>
+                                                                </td>
+                                                            </tr>
+                                                            <tr data-id="9">
+                                                                <td style="width: 40px;">
+                                                                    <div
+                                                                        class="d-flex justify-content-start align-items-center">
+                                                                        <button class="row_move_btn">
+                                                                            <i class="fa-solid fa-grip-vertical"></i>
+                                                                        </button>
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <div
+                                                                        class="questionmaintain_area d-flex justify-content-between align-items-center gap-3">
+                                                                        <h1>Risk Level</h1>
+                                                                        <div
+                                                                            class="d-flex justify-content-end align-items-center gap-3">
+                                                                            <button class="addSubquestion">Add Sub
+                                                                                Question</button>
+                                                                            <button class="deleteQuestion">Delete
+                                                                                Question</button>
+                                                                            <button class="visible_hideBtn">
+                                                                                <i class="fa-solid fa-eye-slash"></i>
+                                                                            </button>
+                                                                        </div>
+                                                                    </div>
+                                                                </td>
+                                                            </tr>
+                                                            <tr data-id="10">
+                                                                <td style="width: 40px;">
+                                                                    <div
+                                                                        class="d-flex justify-content-start align-items-center">
+                                                                        <button class="row_move_btn">
+                                                                            <i class="fa-solid fa-grip-vertical"></i>
+                                                                        </button>
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <div
+                                                                        class="questionmaintain_area d-flex justify-content-between align-items-center gap-3">
+                                                                        <h1>Priority</h1>
+                                                                        <div
+                                                                            class="d-flex justify-content-end align-items-center gap-3">
+                                                                            <button class="addSubquestion">Add Sub
+                                                                                Question</button>
+                                                                            <button class="deleteQuestion">Delete
+                                                                                Question</button>
+                                                                            <button class="visible_hideBtn">
+                                                                                <i class="fa-solid fa-eye-slash"></i>
+                                                                            </button>
+                                                                        </div>
+                                                                    </div>
+                                                                </td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+
                                             </div>
                                         </div>
                                     </div>
-                                   
-                                    
                                 </div>
-                                <div class="modal-body">
-                                    <div class="row">
-                                        <div class="col-xl-4"></div>
-                                        <div class="col-xl-8"></div>
-                                    </div>
-                                </div>
-                              
+
                             </div>
                         </div>
                     </div>
@@ -1125,9 +1417,60 @@
 
 
     </div>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     <script src="main.js"></script>
+    <script>
+        $(function () {
+            const tableBody = $("#questionTable");
+
+            // Debug: ensure table exists
+            if (!tableBody.length) {
+                console.error("questionTable not found in DOM");
+                return;
+            }
+
+            // Load saved order from localStorage (optional)
+            try {
+                const savedOrder = JSON.parse(localStorage.getItem("questionOrder"));
+                if (savedOrder && savedOrder.length) {
+                    const rows = tableBody.children("tr");
+                    savedOrder.forEach(id => {
+                        const row = rows.filter(`[data-id="${id}"]`);
+                        if (row.length) tableBody.append(row);
+                    });
+                }
+            } catch (err) {
+                console.warn("Could not parse saved order:", err);
+            }
+
+            // Initialize sortable
+            tableBody.sortable({
+                handle: ".row_move_btn",
+                placeholder: "sortable-placeholder",
+                helper: "clone",
+                appendTo: "body", // important for modal drag
+                zIndex: 99999, // ensure helper sits above modal/backdrop
+                // default cancel includes 'button' so we remove button from cancel list
+                cancel: "input,textarea,select,option",
+                start: function (e, ui) {
+                    // ensure placeholder same height as row
+                    ui.placeholder.height(ui.helper.outerHeight());
+                    // small visual hint
+                    ui.helper.addClass("ui-sortable-helper");
+                },
+                update: function () {
+                    const newOrder = [];
+                    tableBody.children("tr").each(function () {
+                        newOrder.push($(this).attr("data-id"));
+                    });
+                    localStorage.setItem("questionOrder", JSON.stringify(newOrder));
+                    console.log("Saved order:", newOrder);
+                }
+            }).disableSelection(); // prevent text selection while dragging
+        });
+    </script>
     <script>
         // stop propagation on all icon buttons
         document.querySelectorAll('.icon-btn').forEach(btn => {

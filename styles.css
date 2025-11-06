@@ -461,6 +461,71 @@ button {
     border-radius: 4px;
 }
 
+.addquestionTitle {
+    font-size: 16px;
+    font-weight: 600;
+    color: #000000;
+}
+
+.row_move_btn {
+    font-size: 20px;
+    color: #363636;
+    cursor: move !important;
+
+}
+
+.questionmaintain_area {
+    box-shadow: -1px 3px 4px -3px rgba(0, 0, 0, 0.78);
+    background: #ffffff;
+    padding: 8px 5px;
+}
+
+.questionmaintain_area h1 {
+    font-size: 14px;
+    font-weight: 600;
+    color: #333333;
+    margin-bottom: 0;
+}
+
+/* keep existing styles, add these to improve drag visuals */
+.ui-sortable-helper {
+    display: table;
+    /* look like a table row */
+    width: auto;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
+    background: #fff;
+}
+
+.sortable-placeholder {
+    background: #f0f9ff !important;
+    border: 2px dashed #007A99 !important;
+    height: 52px !important;
+}
+
+.addSubquestion,
+.deleteQuestion,
+.visible_hideBtn {
+    font-size: 12px;
+    color: #000000;
+    border: 1px solid #4f46e5;
+    padding: 3px 6px;
+    border-radius: 4px;
+}
+
+.addSubquestion {
+    background: #4f46e510;
+}
+
+.deleteQuestion {
+    background: #99030310;
+    color: #8f0303;
+    border: 1px solid #8b0101;
+}
+
+.visible_hideBtn {
+    color: #989899;
+}
+
 .patient_sevices_tabs {
     overflow-x: auto;
     width: 100%;
@@ -642,6 +707,28 @@ button {
     z-index: 1055 !important;
 }
 
+.question_table {
+    height: 500px;
+    overflow-y: auto;
+}
+
+.history_symptoms_area {
+    border: 1px solid #cccccc;
+    height: 500px;
+    overflow-y: auto;
+    position: relative;
+}
+
+.history_symptoms_item {
+    background: #7367f010;
+    border: 1px solid #7367f0;
+    color: #000000;
+    font-size: 12px;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
 
 @media (max-width: 1200px) {
     .global_search_area .form-control {
@@ -674,10 +761,24 @@ button {
         font-size: 12px;
         padding: 2px;
     }
+
+    .addquestionTitle {
+        font-size: 14px;
+    }
 }
 
 @media (max-width:420px) {
     .items_wise_details_area h1 {
         font-size: 13px;
+    }
+
+    .addquestionTitle {
+        font-size: 12px;
+    }
+
+    .question_header_area {
+        flex-direction: column-reverse;
+        align-items: flex-start;
+        gap: 10px;
     }
 }

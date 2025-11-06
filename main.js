@@ -354,3 +354,13 @@ $(document).ready(function() {
     console.log("Selected duration:", selectedValue);
   });
 });
+
+$(document).ready(function() {
+    $('#symptomSearch').on('keyup', function() {
+        var searchValue = $(this).val().toLowerCase().trim();
+
+        $('.history_symptoms_item').filter(function() {
+            $(this).toggle($(this).text().toLowerCase().indexOf(searchValue) > -1);
+        });
+    });
+});
