@@ -1,8 +1,11 @@
+
+
 * {
     margin: 0;
     padding: 0;
     outline: 0;
-    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box;
 }
 
 body {
@@ -24,12 +27,14 @@ button {
 .patient_list_area {
     width: 250px;
     border-right: 1px solid #e9ecef;
-    box-shadow: 2px 0 8px rgba(0, 0, 0, 0.04);
-    padding: 0 7px;
+    -webkit-box-shadow: 2px 0 8px rgba(0, 0, 0, 0.04);
+            box-shadow: 2px 0 8px rgba(0, 0, 0, 0.04);
     position: absolute;
     left: 0;
     top: 0;
     height: 100%;
+    -webkit-transition: all 0.3s ease;
+    -o-transition: all 0.3s ease;
     transition: all 0.3s ease;
     z-index: 2;
     background: #ffffff;
@@ -38,6 +43,8 @@ button {
 .patient_details_area {
     max-width: calc(100% - 250px);
     margin-left: 250px;
+    -webkit-transition: all 0.3s ease;
+    -o-transition: all 0.3s ease;
     transition: all 0.3s ease;
     width: 100%;
 }
@@ -52,18 +59,26 @@ button {
 
 .toggle_patientList {
     position: absolute;
-    right: -32px;
+    right: -25px;
     top: 50%;
-    transform: translateY(-50%);
+    -webkit-transform: translateY(-50%);
+        -ms-transform: translateY(-50%);
+            transform: translateY(-50%);
     background: #7367f0;
     border: none;
     color: #ffffff;
     height: 40px;
     width: 25px;
     border-radius: 0 10px 10px 0;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    justify-content: center;
-    align-items: center;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
     cursor: pointer;
     font-size: 20px;
 }
@@ -74,9 +89,15 @@ button {
     font-size: 14px;
     color: #000000;
     cursor: pointer;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    justify-content: center;
-    align-items: center;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
     padding: 8px 0;
 }
 
@@ -129,9 +150,9 @@ button {
 }
 
 .today_or_all_select button.active {
-    border: 1px solid #9898995c;
-    border-bottom: 1px solid #989899;
-    background: #9898995c;
+    border: 1px solid #7367f0;
+    border-bottom: 1px solid #7367f0;
+    background: #7367f020;
 
 }
 
@@ -169,6 +190,8 @@ button {
 .patient_list li a {
     text-decoration: none;
     color: #333333;
+    -webkit-transition: all 0.3s ease;
+    -o-transition: all 0.3s ease;
     transition: all 0.3s ease;
 }
 
@@ -207,18 +230,25 @@ button {
 
 /* Enhanced transition styles */
 .online_offline_tab.switching .patient_categoryBtn {
+    -webkit-transition: all 0.3s ease;
+    -o-transition: all 0.3s ease;
     transition: all 0.3s ease;
 }
 
 .patient_categoryBtn {
+    -webkit-transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    -o-transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     position: relative;
     overflow: hidden;
 }
 
 .patient_categoryBtn.active {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    -webkit-transform: translateY(-2px);
+        -ms-transform: translateY(-2px);
+            transform: translateY(-2px);
+    -webkit-box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
 .patient_categoryBtn:after {
@@ -228,9 +258,15 @@ button {
     left: 50%;
     width: 0;
     height: 3px;
+    background: -webkit-gradient(linear, left top, right top, from(#4f46e5), to(#7c3aed));
+    background: -o-linear-gradient(left, #4f46e5, #7c3aed);
     background: linear-gradient(90deg, #4f46e5, #7c3aed);
+    -webkit-transition: all 0.3s ease;
+    -o-transition: all 0.3s ease;
     transition: all 0.3s ease;
-    transform: translateX(-50%);
+    -webkit-transform: translateX(-50%);
+        -ms-transform: translateX(-50%);
+            transform: translateX(-50%);
 }
 
 .patient_categoryBtn.active:after {
@@ -239,11 +275,15 @@ button {
 
 .OnlinePatient_list,
 .offlinepatient_list {
+    -webkit-transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    -o-transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .todayPatientList,
 .allPatientList {
+    -webkit-transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    -o-transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
@@ -261,6 +301,8 @@ button {
     background: rgba(255, 255, 255, 0.8);
     z-index: 10;
     opacity: 0;
+    -webkit-transition: opacity 0.3s ease;
+    -o-transition: opacity 0.3s ease;
     transition: opacity 0.3s ease;
 }
 
@@ -269,14 +311,19 @@ button {
 }
 
 .today_or_all_select button {
+    -webkit-transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    -o-transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     position: relative;
     overflow: hidden;
 }
 
 .today_or_all_select button.active {
-    transform: scale(1.05);
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    -webkit-transform: scale(1.05);
+        -ms-transform: scale(1.05);
+            transform: scale(1.05);
+    -webkit-box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
 /* Smooth scrolling for better performance */
@@ -284,9 +331,12 @@ button {
 .offlinepatient_list,
 .todayPatientList,
 .allPatientList {
-    transform: translateZ(0);
-    backface-visibility: hidden;
-    perspective: 1000;
+    -webkit-transform: translateZ(0);
+            transform: translateZ(0);
+    -webkit-backface-visibility: hidden;
+            backface-visibility: hidden;
+    -webkit-perspective: 1000;
+            perspective: 1000;
 }
 
 /* Hardware acceleration for smoother animations */
@@ -296,7 +346,8 @@ button {
 .allPatientList,
 .patient_categoryBtn,
 .today_or_all_select button {
-    transform: translateZ(0);
+    -webkit-transform: translateZ(0);
+            transform: translateZ(0);
     will-change: transform, opacity;
 }
 
@@ -305,17 +356,60 @@ button {
     color: white;
 }
 
-@keyframes pulse {
+@-webkit-keyframes pulse {
     0% {
-        transform: scale(1);
+        -webkit-transform: scale(1);
+                transform: scale(1);
     }
 
     50% {
-        transform: scale(1.1);
+        -webkit-transform: scale(1.1);
+                transform: scale(1.1);
     }
 
     100% {
-        transform: scale(1);
+        -webkit-transform: scale(1);
+                transform: scale(1);
+    }
+}
+
+@keyframes pulse {
+    0% {
+        -webkit-transform: scale(1);
+                transform: scale(1);
+    }
+
+    50% {
+        -webkit-transform: scale(1.1);
+                transform: scale(1.1);
+    }
+
+    100% {
+        -webkit-transform: scale(1);
+                transform: scale(1);
+    }
+}
+
+
+
+@-webkit-keyframes bounce {
+
+    0%,
+    20%,
+    60%,
+    100% {
+        -webkit-transform: translateY(0);
+                transform: translateY(0);
+    }
+
+    40% {
+        -webkit-transform: translateY(-5px);
+                transform: translateY(-5px);
+    }
+
+    80% {
+        -webkit-transform: translateY(-2px);
+                transform: translateY(-2px);
     }
 }
 
@@ -327,15 +421,33 @@ button {
     20%,
     60%,
     100% {
-        transform: translateY(0);
+        -webkit-transform: translateY(0);
+                transform: translateY(0);
     }
 
     40% {
-        transform: translateY(-5px);
+        -webkit-transform: translateY(-5px);
+                transform: translateY(-5px);
     }
 
     80% {
-        transform: translateY(-2px);
+        -webkit-transform: translateY(-2px);
+                transform: translateY(-2px);
+    }
+}
+
+
+@-webkit-keyframes dropdownSlide {
+    from {
+        opacity: 0;
+        -webkit-transform: translateY(-10px) scale(0.95);
+                transform: translateY(-10px) scale(0.95);
+    }
+
+    to {
+        opacity: 1;
+        -webkit-transform: translateY(0) scale(1);
+                transform: translateY(0) scale(1);
     }
 }
 
@@ -343,12 +455,14 @@ button {
 @keyframes dropdownSlide {
     from {
         opacity: 0;
-        transform: translateY(-10px) scale(0.95);
+        -webkit-transform: translateY(-10px) scale(0.95);
+                transform: translateY(-10px) scale(0.95);
     }
 
     to {
         opacity: 1;
-        transform: translateY(0) scale(1);
+        -webkit-transform: translateY(0) scale(1);
+                transform: translateY(0) scale(1);
     }
 }
 
@@ -360,9 +474,15 @@ button {
     color: #ffffff;
     font-size: 34px;
     font-weight: 600;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    justify-content: center;
-    align-items: center;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
     text-transform: uppercase;
 }
 
@@ -475,7 +595,8 @@ button {
 }
 
 .questionmaintain_area {
-    box-shadow: -1px 3px 4px -3px rgba(0, 0, 0, 0.78);
+    -webkit-box-shadow: -1px 3px 4px -3px rgba(0, 0, 0, 0.78);
+            box-shadow: -1px 3px 4px -3px rgba(0, 0, 0, 0.78);
     background: #ffffff;
     padding: 8px 5px;
 }
@@ -492,7 +613,8 @@ button {
     display: table;
     /* look like a table row */
     width: auto;
-    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
+    -webkit-box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
     background: #fff;
 }
 
@@ -541,6 +663,8 @@ button {
     border-radius: 5px;
     background: #7367f010;
     text-wrap: nowrap;
+    -webkit-transition: all 0.3s ease;
+    -o-transition: all 0.3s ease;
     transition: all 0.3s ease;
 }
 
@@ -562,6 +686,8 @@ button {
     padding: 2px 5px;
     border-radius: 5px;
     font-size: 12px;
+    height: -webkit-fit-content;
+    height: -moz-fit-content;
     height: fit-content;
     margin-bottom: 10px;
     margin-right: 10px;
@@ -570,6 +696,8 @@ button {
 
 .tab-content {
     display: none;
+    -webkit-transition: all 0.3s ease;
+    -o-transition: all 0.3s ease;
     transition: all 0.3s ease;
 }
 
@@ -578,12 +706,24 @@ button {
 }
 
 .follow_Up {
+    width: -webkit-fit-content;
+    width: -moz-fit-content;
     width: fit-content;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    justify-content: start;
-    align-items: center;
+    -webkit-box-pack: start;
+        -ms-flex-pack: start;
+            justify-content: start;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
 
-    column-gap: 10px;
+    -webkit-column-gap: 10px;
+
+       -moz-column-gap: 10px;
+
+            column-gap: 10px;
     row-gap: 10px;
 }
 
@@ -633,10 +773,18 @@ button {
     border-radius: 5px;
     padding: 2px 5px;
     margin-right: 5px;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    justify-content: center;
-    align-items: center;
-    column-gap: 5px;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-column-gap: 5px;
+       -moz-column-gap: 5px;
+            column-gap: 5px;
 }
 
 .selected_items button {
@@ -672,8 +820,13 @@ button {
 
 .duration_table table td {
     cursor: pointer;
+    -webkit-transition: all 0.2s ease;
+    -o-transition: all 0.2s ease;
     transition: all 0.2s ease;
-    user-select: none;
+    -webkit-user-select: none;
+       -moz-user-select: none;
+        -ms-user-select: none;
+            user-select: none;
 }
 
 .duration_table table td:hover {
@@ -684,7 +837,8 @@ button {
     background-color: #4f46e5;
     color: #fff;
     font-weight: 600;
-    box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.15);
+    -webkit-box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.15);
+            box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.15);
 }
 
 .offcanvas-end {
@@ -729,6 +883,8 @@ button {
     padding: 5px 10px;
     border-radius: 5px;
     cursor: pointer;
+    -webkit-transition: all 0.3s ease;
+    -o-transition: all 0.3s ease;
     transition: all 0.3s ease;
 }
 
@@ -799,8 +955,13 @@ button {
     }
 
     .question_header_area {
-        flex-direction: column-reverse;
-        align-items: flex-start;
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: reverse;
+            -ms-flex-direction: column-reverse;
+                flex-direction: column-reverse;
+        -webkit-box-align: start;
+            -ms-flex-align: start;
+                align-items: flex-start;
         gap: 10px;
     }
 }
