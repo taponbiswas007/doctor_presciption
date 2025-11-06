@@ -562,6 +562,9 @@ button {
     padding: 2px 5px;
     border-radius: 5px;
     font-size: 12px;
+    height: fit-content;
+    margin-bottom: 10px;
+    margin-right: 10px;
 }
 
 
@@ -589,7 +592,6 @@ button {
     font-size: 13px;
     color: #000000;
     font-weight: 500;
-    background: #03f648;
 }
 
 .follow_Up p:last-child {
@@ -728,6 +730,26 @@ button {
     border-radius: 5px;
     cursor: pointer;
     transition: all 0.3s ease;
+}
+
+.question_list_item h1 {
+    font-size: 14px;
+    font-weight: 600;
+    color: #000000;
+    margin-bottom: 5px;
+}
+
+.severity_feild_area label {
+    font-size: 12px;
+    background: #ffffff;
+    left: 10px;
+    top: -11px;
+    padding: 1px 2px;
+}
+
+.severity_feild_area select {
+    font-size: 14px;
+    color: #000000;
 }
 
 @media (max-width: 1200px) {
